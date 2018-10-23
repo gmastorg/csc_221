@@ -11,10 +11,13 @@ class Rental(object):
         return datetime.now()
 
     def getDueDate(self):
-        return self.startDate+timeDelta(days=3)
+        return self.startDate+timedelta(days=3)
 
     def getReturnDate(self):#redundant
         return self.returnDate
+
+    def getLateFee(self):
+        return rate*.2
 
     def getRentalRate(self):
         return self.rate*self.returnDate

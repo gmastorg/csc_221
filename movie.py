@@ -7,7 +7,7 @@ Created on Mon Oct 15 13:52:43 2018
 
 
 class Movie (object):
-    def __init__(self,genre,Format, description,title='',):
+    def __init__(self,genre='',Format='', description='',title='',):
         
         self.genre=genre
         self.format=Format
@@ -15,18 +15,38 @@ class Movie (object):
         self.title=title
 
     def getGenre(self):
-        genre={1:'Regular',2:'Children', 3:'New Release'}
-        return genre
+        gen={'1':['1.','Regular'],
+               '2':['2.','Children'],
+               '3':['3.','New Release']}
+        return gen
+
+    def getFormat(self):
+        For={'1':['1.', 'VHS',1],
+            '2':['2.', 'DVD',3],
+            '3':['3.', 'BluRay',4],
+            '4':['4.', 'Stream',5]}
+        return For
     
     def getDescription(self):
-        return "This movie is about: "+ self.title
+        description= "This movie is about: "+ self.title
+        return description
+
+    def __str__(self):
+##        header=['Title','Format','Genre','Description']
+##        choice=[str(self.title),str(self.format),str(self.genre),str(self.getDescription())]
+##        for x in header:
+##            for y in choice:
+##                line=x+':'+y
+## #               line=str(line)+' '
+##                return str(line)
+       
+            
+       return str(self.title)+' '+str(self.format)+' '+str(self.genre)+' '+str(self.getDescription())
 
 
         
 
-        
- ##    def getRentalSpan(self):
-##        return self.startDate+timedelta(days=3)
+
 
        
         

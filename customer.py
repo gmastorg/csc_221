@@ -23,7 +23,7 @@ class Customer (object):
 
     def getCustomerStatus(self):
      #   status={'1.':'10% Discount for New Customers',
- #               '2.':'5% Discount for Returning Customers'}
+    #            '2.':'5% Discount for Returning Customers'}
         status={'1':['1.','New Customers',10],
                 '2':['2.','Returning Customers',5]}
         return status
