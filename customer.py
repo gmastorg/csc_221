@@ -14,24 +14,26 @@ class Customer (object):
         self.state=state
         self.zipcode=zipcode
 
-
     def getCustomerName(self):
         return str(self.firstName)+" "+str(self.lastName)
 
     def getBilling(self):
-        text=str(self.address)+'\n'+str(self.city)+','+str(self.state)
+        text='\n'+str(self.address)+'\n'+str(self.city)+','+str(self.state)
         return text+" "+str(self.zipcode)
 
-    def getGenre(self):
-        genre={1:'Regular',2:'Children', 3:'New Release'}
-        return genre
-
     def getCustomerStatus(self):
-        status={1:'New Customer', 2:'Returning Customer'}
+     #   status={'1.':'10% Discount for New Customers',
+ #               '2.':'5% Discount for Returning Customers'}
+        status={'1':['1.','New Customers',10],
+                '2':['2.','Returning Customers',5]}
         return status
     
     def getPayment(self):#if customer's not returning, cannot place on tab
-        payMethod={1:'Cash',2:'Debit Card',3:'Check',4:'Credit Card',5:'Tab'}
+        payMethod={'1':['1.','Cash'],
+                   '2':['2.','Debit Card'],
+                   '3':['3.','Check'],
+                   '4':['4.','Credit Card'],
+                   '5':['5.','Tab']}
         return payMethod
     
     def __str__(self):
