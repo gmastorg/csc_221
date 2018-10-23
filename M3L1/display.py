@@ -9,7 +9,7 @@ holds output for program
 
 def welcomeMessage():
     
-    print("Welcome to our video store.")
+    print("Welcome to our video store.\n")
 
 def movieName():
     
@@ -19,11 +19,11 @@ def daysRented():
     
     print("Enter the number of days you are renting the movie for: ")
     
-def customerName():
+def loginMenu():
     
-
-def reciept():
-
-    print("Movie: "+movie._Name)
-    print("Cost per Day "+movie._Price)
-    print("Total: "+total)
+    print("To continue please select an option below: \n1.Login"
+          +"\n2.Create Account")
+    
+def invalidInput():
+    
+    print("Invalid input. \nTry again.")

@@ -6,14 +6,24 @@
 Author: Gabriela Canjura
 receives input from user
 """
-
+import string
 import display
-import movies
+import login as l
 
 def main():
     
     display.welcomeMessage()
     
-    name = input(display.movieName())
+    choice = input(display.loginMenu())
+    """validates input"""
+    while not choice:
+        choice = input(display.loginMenu())
+    while choice not in string.digits or int(choice) > 2:
+        display.invalidInput()
+        choice = input(display.loginMenu())
+
+    decision = int(choice)
+        
+    l.loginDecision(decision)
     
-    
+main()
