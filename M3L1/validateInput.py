@@ -4,36 +4,62 @@ Created on Mon Oct 22 18:36:46 2018
 
 @author: gmastorg
 """
-import login 
+import os 
+import csv
+import customerLogins as cl
+
+def getUserNames():
+    
+    usernames = []
+    
+    if not os.stat("login.csv").st_size == 0:
+        with open ('login.csv') as file:
+            inputFile = csv.reader(file)
+        
+            for row in inputFile:
+                username = row[0]
+                password = row[1]
+                filename = row[2]
+                
+                logins = cl.CustomerLogins(username, password, filename)
+            
+                usernames.append(logins) 
+   
+    return usernames
 
 def verifyUsername(username):
     
-    # need to fix this for empty files
-    usernamesList = [login.getUserNames()]
+    verify = False
+    usernamesList = []
     
-    if not not usernamesList:
-        for i in range(len(usernamesList)):
-            if username == usernamesList[i].username:
-                return True
-    else:
-        return False
+    usernamesList = getUserNames()
+
+    for item in usernamesList:
+        if username == item.username:
+            verify = True
+
+    return verify
 
 def getFileName(username):
     
-    usernamesList = [login.getUserNames()]
+    usernamesList = []
+    usernamesList = getUserNames()
     
-    for i in range(len(usernamesList)):
-        if username == usernamesList[i].username:
-            return usernamesList[i].filename
+    for item in usernamesList:
+        if username == item.username:
+            return item.filename
 
 def verifyPassword(password):
     
-    usernamesList = [login.getUserNames()]
+    verify = False
+    usernamesList = []
     
-    for i in range(len(usernamesList)):
-        if password == usernamesList[i].password:
-            return True
-    
-    return False
-    
-        
+    usernamesList = getUserNames()
+
+    for item in usernamesList:
+        if password == item.password:
+            verify = True
+
+    return verify
+
+ 

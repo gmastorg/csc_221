@@ -3,7 +3,7 @@ Created on Mon Oct 15 13:52:43 2018
 @author: hyltonc4469
 """
 
-class Customer (object):
+class Customer ():
     def __init__(self, firstName,lastName, address, city,state,zipcode):
         self.firstName=firstName
         self.lastName=lastName

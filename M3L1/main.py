@@ -14,13 +14,16 @@ def main():
     
     display.welcomeMessage()
     
-    choice = input(display.loginMenu())
+    display.loginMenu()
+    choice = input()
     """validates input"""
     while not choice:
-        choice = input(display.loginMenu())
+        display.loginMenu()
+        choice = input()
     while choice not in string.digits or int(choice) > 2:
         display.invalidInput()
-        choice = input(display.loginMenu())
+        display.loginMenu()
+        choice = input()
 
     decision = int(choice)
         

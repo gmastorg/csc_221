@@ -21,8 +21,7 @@ def daysRented():
     
 def loginMenu():
     
-    print("To continue please select an option below: \n1.Login"
-          +"\n2.Create Account")
+    print("To continue please select an option below: \n1.Login\n2.Create Account")
     
 def invalidInput():
     
