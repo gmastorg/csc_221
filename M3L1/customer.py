@@ -28,9 +28,24 @@ class Customer ():
         status={1:'New Customer', 2:'Returning Customer'}
         return status
     
-    def getPayment(self):#if customer's not returning, cannot place on tab
-        payMethod={1:'Cash',2:'Debit Card',3:'Check',4:'Credit Card',5:'Tab'}
-        return payMethod
+    def getPayment():#if customer's not returning, cannot place on tab
+         
+        payMethod={'1':['1.','Cash'],
+                   '2':['2.','Debit Card'],
+                   '3':['3.','Check'],
+                   '4':['4.','Credit Card'],
+                   '5':['5.','Tab']}
+        
+        for val in payMethod.values():
+            print(val[0],val[1])
+    
+        method=input("How will you pay for your rental(s)?:")
+   
+        for key,value in payMethod.items():
+            if method==key:
+                payment=value[1]
+    
+                print("You have selected the following payment method: ",payment)
     
     def __str__(self):
         return str(self.getCustomerName()) +str(self.getBilling())
