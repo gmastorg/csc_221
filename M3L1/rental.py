@@ -33,6 +33,16 @@ class Rental(object):
 
     def getRentalRate(self):
         return self.rate*self.days
+    
+    def getRentalDates(Format,rate):
+        
+        r=Rental()
+        startDate=r.getStartDate()
+        dueDate=r.getDueDate()
+        lateRate=r.getLateRate()
+        rentalRate=r.getRentalRate()
+        r=Rental(startDate,dueDate,rate)
+        print(str(r))
 
     def __str__(self):
         text=("Start Date: "+str(self.startDate))+("\nDueDate: "+str(self.dueDate))

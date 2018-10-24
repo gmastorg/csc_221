@@ -28,6 +28,38 @@ class Movie (object):
         description= "This movie is about: "+ self.title
         return description
 
+    def getMovieGenre(m):
+        
+        gen = Movie.getGenre(m);
+        
+        for val in gen.values():
+            print(val[0],val[1])
+            
+        genre=input("Select genre: ")
+        
+        for key, value in gen.items():
+            if genre==key:
+                print("You have selected the following movie genre: ", value[1] )
+                genre=value[1]
+    
+        return m,genre
+
+    def getMovieFormat(m):
+        
+        For = Movie.getFormat(m)
+        
+        for val in For.values():
+            print(val[0],val[1])
+            
+        Format=input("Select format: ")
+        for key, value in For.items():
+            if Format==key:           
+                print("You have selected the following movie format: ",value[1])#MEnu
+                rate=value[2]
+                Format=value[1]
+        return m,Format,rate
+
+
     def __str__(self):
 ##        header=['Title','Format','Genre','Description']
 ##        choice=[str(self.title),str(self.format),str(self.genre),str(self.getDescription())]
