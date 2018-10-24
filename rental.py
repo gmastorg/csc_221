@@ -1,23 +1,35 @@
-from datetime import timedelta, datetime
+from datetime import timedelta, date,time
 
 
 class Rental(object):
-    def __init__(self, startDate,returnDate, rate=0.0):
-        self.rate=rate
+    def __init__(self,startDate='',dueDate='',rate=0.0, lateFee=.2,days=3):
         self.startDate=startDate #can this equal datetime.now()
-        self.returnDate=returnDate
+        self.dueDate=dueDate
+        self.rate=rate
+ #       self.lateRate=lateRate
+        self.lateFee=lateFee
+        self.days=days
 
     def getStartDate(self):
-        return datetime.now()
+        self.startDate=date.today()
+        return self.startDate
 
     def getDueDate(self):
-        return self.startDate+timedelta(days=3)
+        self.dueDate=self.startDate+(timedelta(days=3))
+        return self.dueDate
 
     def getReturnDate(self):#redundant
         return self.returnDate
 
-    def getLateFee(self):
-        return rate*.2
+    def getLateRate(self):
+         self.lateRate=(self.rate*self.lateFee)
+         return self.lateRate
+         
 
     def getRentalRate(self):
-        return self.rate*self.returnDate
+        return self.rate*self.days
+
+    def __str__(self):
+        text=("Start Date: "+str(self.startDate))+("\nDueDate: "+str(self.dueDate))
+        text+=("\nRental Rate: $"+str(self.getRentalRate()))
+        return text+("\nLate Fee will be: $"+str(self.getLateRate())+" per additional day.")

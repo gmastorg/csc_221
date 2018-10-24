@@ -84,27 +84,26 @@ def getMovieObject(m,genre,Format):
     return m,movie,title
 
 ##############################RENTAL INFORMAITON##############################
-def getRentalDates(Format,rate):
-    r=Rental()
-    startDate=r.getStartDate()
-    print("Start Date:",startDate)
-    dueDate=r.getDueDate()
-    print("Return Date",dueDate)
-    lateRate=r.getLateRate()
-    rentalRate=r.getRentalRate()
-    r=Rental(startDate,dueDate,rate)
-    print("The movie rental rate for ",Format,"is: $",rate," per day.")
-    print(str(r))
- #   rentalRate
+
 ##############################CHARGES#########################################
 def calCharges(m,movie):
    # pass# title, #Format, startDate, dueDate, rate?, rentalRate,lateFee
     #print(title)
-    purchaseHeader=("RENTAL\tFORMAT\tRATE\n")
+    var='{:<20}'
+    purchaseHeader=("RENTAL\FORMAT\tRATE\n")
+    print(var.format(purchaseHeader))
+    print((m.title,m.format,))
+    def getRentalDates(Format,rate):
+        r=Rental()
+        startDate=r.getStartDate()
+        dueDate=r.getDueDate()
+    
+        lateRate=r.getLateRate()
+        rentalRate=r.getRentalRate()
+        r=Rental(startDate,dueDate,rate)
     line=('-'*len(purchaseHeader))
 ##    for m in Movie:
 ##        print(m.title)       
-    
         
 
 
@@ -118,11 +117,11 @@ def main():
         m,genre=getMovieGenre()
         m,Format,rate=getMovieFormat(m)
         m,movie,title=getMovieObject(m,genre,Format)
- #       calCharges(m,movie)
-        getRentalDates(Format,rate)
+        calCharges(m,movie)
+        #getRentalDates(Format,rate)
         print("Your movies are: ",movie,'\nAdd another movie?')
         again=input('y/n\n')
-    calCharges(m, movie)
+ #   calCharges(m, movie)
     c=getCustomerInfo()
     status,opt=getCustomerStatus(c)
     getDiscount(c, status,opt)
