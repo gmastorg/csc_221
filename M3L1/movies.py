@@ -4,12 +4,13 @@ Created on Mon Oct 15 13:52:43 2018
 @author: hyltonc4469
 """
 class Movie (object):
-    def __init__(self,genre='',Format='', description='',title='',):
+    def __init__(self,genre='',Format='', description='',title='',rate = 0.0):
         
         self.genre=genre
         self.format=Format
         self.description=description
         self.title=title
+        self.rate=rate
 
     def getGenre(self):
         gen={'1':['1.','Regular'],

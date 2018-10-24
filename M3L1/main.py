@@ -17,12 +17,13 @@ from rental import Rental
 def main():
     again='y'
     movie = []
+    rates = []
     
     display.welcomeMessage()
-    
+    """
     display.loginMenu()
     choice = input()
-    """validates input"""
+    #validates input
     while not choice:
         display.loginMenu()
         choice = input()
@@ -34,39 +35,54 @@ def main():
     decision = int(choice)
         
     l.loginDecision(decision)
-    
+    """
     while again=='y':
         m=Movie()
         m, genre=Movie.getMovieGenre(m)
         m,Format,rate=Movie.getMovieFormat(m)
-        m = getMovieObject(m,genre,Format)
+        m = getMovieObject(m,genre,Format,rate)
         movie.append(m)
-        Rental.getRentalDates(Format,rate)
+         
+        r=Rental()
+        r = Rental.getRentalDates(r,Format,rate)
+        rates.append(r)
         print('\nAdd another movie?')
         again=input('y/n\n')
         
-    calCharges(movie)
+    calCharges(movie,rates)
     
     c.Customer.getPayment()   
 
-def getMovieObject(m,genre,Format):
+def getMovieObject(m,genre,Format,rate):
  
     title=input("Movie Title: ")  
     description=Movie.getDescription(m)
-    m = Movie(genre,Format,description, title)
+    m = Movie(genre,Format,description, title, rate)
     
     print("You have selected the following movie infomation: ", str(m))#MEnu
     
     return m
 
-def calCharges(movie):
+def calCharges(movies, rates):
+    
+    total = 0
     
     purchaseHeader=("RENTAL\tFORMAT\tRATE\n")
     line=('-'*len(purchaseHeader))
     
     print(purchaseHeader,line)
-    for item in movie:
-        print(item.title)       
+    
+    for item in movies:
+        print(item.title+"\t"+item.format+"\t"+str(item.rate))
+        
+    for item in rates:
+        cost = item.rate*item.days
+        total += cost
+    
+    total = total*1.05
+    
+    print("\nTotal: $"+'{0:.2f}'.format(total)+"\n")   
+        
 
 #def printCharges():
     
