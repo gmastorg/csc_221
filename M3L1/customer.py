@@ -1,7 +1,10 @@
+# CSC221
+# M3L1_CanjuraHylton
+# Goal: [Gold]
 """
-Created on Mon Oct 15 13:52:43 2018
-@author: hyltonc4469
+class for customers 
 """
+import validateInput as v
 
 class Customer ():
     def __init__(self, firstName,lastName, address, city,state,zipcode):
@@ -20,16 +23,9 @@ class Customer ():
         text=str(self.address)+'\n'+str(self.city)+','+str(self.state)
         return text+" "+str(self.zipcode)
 
-    def getGenre(self):
-        genre={1:'Regular',2:'Children', 3:'New Release'}
-        return genre
-
-    def getCustomerStatus(self):
-        status={1:'New Customer', 2:'Returning Customer'}
-        return status
-    
     def getPayment():#if customer's not returning, cannot place on tab
-         
+        """receives customer payment option"""
+        maxOption = 0; 
         payMethod={'1':['1.','Cash'],
                    '2':['2.','Debit Card'],
                    '3':['3.','Check'],
@@ -38,8 +34,12 @@ class Customer ():
         
         for val in payMethod.values():
             print(val[0],val[1])
-    
+            maxOption +=1
+            
         method=input("How will you pay for your rental(s)?:")
+        
+        while v.validateNull(method)==False or v.validateText(method, maxOption)==False:
+            method=input("How will you pay for your rental(s)?:")
    
         for key,value in payMethod.items():
             if method==key:

@@ -1,34 +1,48 @@
-   # -*- coding: utf-8 -*-
-"""
-Created on Mon Oct 22 18:36:46 2018
+# CSC221
+# M3L1_CanjuraHylton
+# Goal: [Gold]
 
-@author: gmastorg
 """
-import os 
+validates input
+"""
 import csv
 import customerLogins as cl
+import string
+
+def validateNull(choice):
+    """validates if no input"""
+    if not choice:
+        return False
+    else:
+        return True
+    
+def validateText(choice, maxOption):
+    """validates if letter or not menu option"""
+    if choice not in string.digits or int(choice) > maxOption:
+        return False
+    else:
+        return True
 
 def getUserNames():
-    
+    """creates list of login usernames and passwords from file"""
     usernames = []
     
-    if not os.stat("login.csv").st_size == 0:
-        with open ('login.csv') as file:
-            inputFile = csv.reader(file)
+    with open ('login.csv') as file:
+        inputFile = csv.reader(file)
         
-            for row in inputFile:
-                username = row[0]
-                password = row[1]
-                filename = row[2]
+        for row in inputFile:
+            username = row[0]
+            password = row[1]
+            filename = row[2]
                 
-                logins = cl.CustomerLogins(username, password, filename)
+            logins = cl.CustomerLogins(username, password, filename)
             
-                usernames.append(logins) 
+            usernames.append(logins) 
    
     return usernames
 
 def verifyUsername(username):
-    
+    """checks the list of customer login objects for username entered by user"""
     verify = False
     usernamesList = []
     
@@ -41,7 +55,7 @@ def verifyUsername(username):
     return verify
 
 def getFileName(username):
-    
+    """once customer logs in retrieves their customer file"""
     usernamesList = []
     usernamesList = getUserNames()
     
@@ -50,7 +64,7 @@ def getFileName(username):
             return item.filename
 
 def verifyPassword(password):
-    
+    """checks the list of customer login objects for password entered by user"""
     verify = False
     usernamesList = []
     

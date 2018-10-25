@@ -1,8 +1,9 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Oct 22 17:13:11 2018
+# CSC221
+# M3L1_CanjuraHylton
+# Goal: [Gold]
 
-@author: gmastorg
+"""
+deals with verification of login and creation of login/customer account
 """
 import csv
 import customerLogins as cl
@@ -18,7 +19,7 @@ def loginDecision(decision):
         createAccount()
 
 def login():
-    ""
+    """receives username and password verifies info and loads customer file to customer object"""
     username = input("Username: ")
     password = input("Password: ")
     
@@ -38,7 +39,7 @@ def login():
         login()
     
 def createAccount():
-    
+    """has user create account if theirs does not exist"""
     username = input("Username: ")
         
     password = input("Password: ")
@@ -56,7 +57,7 @@ def createAccount():
     outfile.close()
 
 def getCustomerInfo(filename):
-        
+    """creates customer object from customer file"""  
     with open(filename) as file:
         inputFile = csv.reader(file)
         
@@ -71,7 +72,7 @@ def getCustomerInfo(filename):
     c.Customer(firstName, lastName, address, city, state, zipcode) 
         
 def createCustomer(filename):
-         
+   """creates new customer object and new customer file"""      
    firstName=input("First Name: ")
    lastName=input("Last Name: ")
    address=input("Street Adress: ")

@@ -1,8 +1,9 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Oct 22 18:26:38 2018
+# CSC221
+# M3L1_CanjuraHylton
+# Goal: [Gold]
 
-@author: gmastorg
+"""
+class for username, login and filename for customer
 """
 
 class CustomerLogins():

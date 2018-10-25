@@ -1,28 +1,31 @@
 # CSC221
-# M3L1_Canjura
+# M3L1_CanjuraHylton
 # Goal: [Gold]
 
 """
-Author: Gabriela Canjura
 holds output for program
 """
 
 def welcomeMessage():
     
-    print("Welcome to our video store.\n")
+    welcome = "Welcome to our video store.\n"
+    
+    return welcome
 
 def movieName():
     
-    print("Enter the movie name:")
+    movieName = "Enter the movie name:"
     
-def daysRented():
-    
-    print("Enter the number of days you are renting the movie for: ")
+    return movieName   
     
 def loginMenu():
     
-    print("To continue please select an option below: \n1.Login\n2.Create Account")
+    loginMenu = "To continue please select an option below: \n1.Login\n2.Create Account\n"
+    
+    return loginMenu
     
 def invalidInput():
     
-    print("Invalid input. \nTry again.")
+    invalidInput = "Invalid input. \nTry again."
+    
+    return invalidInput
