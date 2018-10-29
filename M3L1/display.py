@@ -29,3 +29,9 @@ def invalidInput():
     invalidInput = "Invalid input. \nTry again."
     
     return invalidInput
+
+def rentReturnMenu():
+    
+    rentMenu = "1. Rent\n2. Return\n3. Exit\n"
+    
+    return rentMenu

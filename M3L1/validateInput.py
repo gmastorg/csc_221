@@ -8,6 +8,7 @@ validates input
 import csv
 import customerLogins as cl
 import string
+import display
 
 def validateNull(choice):
     """validates if no input"""
@@ -76,4 +77,15 @@ def verifyPassword(password):
 
     return verify
 
- 
+def menu(menuText, maxOption):
+    
+    choice = input(menuText)
+    #validates input
+    while validateNull(choice) == False:
+        choice = input(menuText)
+    while validateText(choice, maxOption) == False:
+        display.invalidInput()
+        choice = input(menuText)
+    decision = int(choice)
+    
+    return decision
