@@ -1,3 +1,3 @@
 # csc_221
-Marie Hylton
+Marie Hylton and Gabi Canjura
 edited 10/29
