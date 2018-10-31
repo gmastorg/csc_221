@@ -48,7 +48,7 @@ class CustomerRental(object):#try passing the time obj. through the clas explici
     def getTimeStamp(self):
         return self.logTime
 
-    #Instead those can be vars in the code#
+    #Instead those can be vars in the code
 '''
     def getExpectedRentDate(self):#redundant?  Use during rental checkout w/time
         #return r.getStartDate()
@@ -78,5 +78,5 @@ class CustomerRental(object):#try passing the time obj. through the clas explici
         self.returnTime=datetime.now().time()
         #TimeSpan
         return self.returnTime-self.rentTime
+
     
-        
