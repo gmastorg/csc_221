@@ -6,18 +6,24 @@
 class of movie objects 
 """
 
-import validateInput as v
-
-class Movie (object):
-    def __init__(self,genre='',Format='', description='',title='',rate = 0.0):
+class Movie ():
+    def __init__(self, genre, description, title, year):
         
         self.genre=genre
-        self.format=Format
         self.description=description
         self.title=title
-        self.rate=rate
+        self.year = year
 
-    def getGenre(self):
+    def getDescription(self):
+        """movie description currently defaults to title of movie"""
+        description= "This movie is about: "+ self.title
+        return description
+
+    def __str__(self):                 
+       return str(self.title)+' '+str(self.genre)+' '+str(self.getDescription())
+   
+    
+        def getGenre(self):
         """dictionary with movie type options for display"""
         gen={'1':['1.','Regular'],
                '2':['2.','Children'],
@@ -32,10 +38,6 @@ class Movie (object):
             '4':['4.', 'Stream',5]}
         return For
     
-    def getDescription(self):
-        """movie description currently defaults to title of movie"""
-        description= "This movie is about: "+ self.title
-        return description
 
     def getMovieGenre(m):
         """receives user input to let them select the type of movie"""
@@ -78,7 +80,3 @@ class Movie (object):
                 rate=value[2]
                 Format=value[1]
         return m,Format,rate
-
-
-    def __str__(self):                 
-       return str(self.title)+' '+str(self.format)+' '+str(self.genre)+' '+str(self.getDescription())

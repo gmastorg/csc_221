@@ -35,3 +35,11 @@ def rentReturnMenu():
     rentMenu = "1. Rent\n2. Return\n3. Exit\n"
     
     return rentMenu
+
+def searchMovies():
+    
+    search = "Select an option to search movies by: \n1.New Releases\n2.Regular"
+    +"\n3.Childrens\n4.All Movies\n"
+    
+    return search
+            

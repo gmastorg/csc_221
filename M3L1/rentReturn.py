@@ -5,6 +5,7 @@ Created on Mon Oct 29 13:15:17 2018
 @author: canjurag4010
 """
 
+import listBuilder as listB
 from customer import Customer
 import display
 import validateInput as v
@@ -24,13 +25,23 @@ def rentReturnDecision(decision):
     #return movie code
 
 def rentMovie():
+    
+    moviesList = listB.getMovieLists() 
+    
+    maxOption = 4
+    
+    decision = v.menu(display.searchMovies(),maxOption)    
+    
+    
+    
     outfile=open("receipt.txt",'w')#Creates a receipt file to hold rental items.
 
     movie = []
     rates = []
     
     #creates empty object to call methods from class
-    m=Movie()
+    
+    
     m, genre=Movie.getMovieGenre(m)
     m,Format,rate=Movie.getMovieFormat(m)
     m = getMovieObject(m,genre,Format,rate)
