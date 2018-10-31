@@ -1,4 +1,13 @@
-from datetime import timedelta, date,time,datetime
+# CSC221
+# M3L1_CanjuraHylton
+# Goal: [Gold]
+
+"""
+store class displays store data
+"""
+
+from datetime import datetime
+
 class Store(object):
     def __init__(self, name='', address='', city='', state='', zipcode='', hours='', phone='',website='',message=''):
         self.name=name
@@ -38,4 +47,3 @@ class Store(object):
         return "Thank you for renting with RedFox Rentals.\nWe enjoy serving "\
                "the best customers in the world!\nPlease provide us with your\n"\
                "feedback:  https://www.surveyape.com\n"
-        
