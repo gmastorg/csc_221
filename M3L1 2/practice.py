@@ -7,4 +7,3 @@ print(time())#zeros
 print("hello")
 print(datetime.now().time())#just the time
 
-

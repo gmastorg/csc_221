@@ -19,10 +19,10 @@ class Movie (object):
 
     def getGenre(self):
         """dictionary with movie type options for display"""
-        gen={'1':['1.','Regular'],
+        return gen={'1':['1.','Regular'],
                '2':['2.','Children'],
                '3':['3.','New Release']}
-        return gen
+ #       return gen
 
     def getFormat(self):
         """dictionary with movie format options for display"""

@@ -73,10 +73,10 @@ class CustomerRental(object):#try passing the time obj. through the clas explici
         #calc days rented for total amount due during payment.
         
         #Rent
-        self.checkout
-        
-
+        self.rentTime=datetime.now().time()
         #Return
-
+        self.returnTime=datetime.now().time()
+        #TimeSpan
+        return self.returnTime-self.rentTime
     
         
