@@ -8,21 +8,21 @@ www.redfoxrentals.com
 
 
 
-2018-10-25 13:29:04.186950
+2018-10-31 12:41:09.352397
 
 
 MOVIE RENTAL        FORMAT              RATE                
 --------------------------------------------------
-sing                BluRay              $4                   
+Hallmark Christmas  DVD                 $3                   
 
 
 
 
 
 
-Total:              $12                                                         
+Total:              $9                                                          
 Tax:                5%                                                          
-Grand Total:        $12.60                                                      
+Grand Total:        $9.45                                                       
 
 
 

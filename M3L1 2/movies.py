@@ -79,6 +79,10 @@ class Movie (object):
                 Format=value[1]
         return m,Format,rate
 
+    
 
+
+
+    
     def __str__(self):                 
        return str(self.title)+' '+str(self.format)+' '+str(self.genre)+' '+str(self.getDescription())

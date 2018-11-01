@@ -25,19 +25,19 @@ def main():
     rates = []
     maxOption = 2
     
-    print(display.welcomeMessage())
-   
-    choice = input(display.loginMenu())
-    #validates input
-    while v.validateNull(choice) == False:
-        choice = input(display.loginMenu())
-    while v.validateText(choice, maxOption) == False:
-        display.invalidInput()
-        choice = input(display.loginMenu())
-
-    decision = int(choice)
-    # uses user input to login or create account    
-    l.loginDecision(decision)
+##    print(display.welcomeMessage())
+##   
+##    choice = input(display.loginMenu())
+##    #validates input
+##    while v.validateNull(choice) == False:
+##        choice = input(display.loginMenu())
+##    while v.validateText(choice, maxOption) == False:
+##        display.invalidInput()
+##        choice = input(display.loginMenu())
+##
+##    decision = int(choice)
+##    # uses user input to login or create account    
+##    l.loginDecision(decision)
  
     #lets user add more than one movie
     while again=='y':
