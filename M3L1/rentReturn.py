@@ -8,6 +8,7 @@ Created on Mon Oct 29 13:15:17 2018
 import listBuilder as listB
 import display
 import validateInput as v
+import rental as r
 
 
 def rentReturnDecision(decision):
@@ -90,6 +91,15 @@ def rentMovie(moviesList, genre):
             selectedMovie = item
         else:
             display.invalidInput()
-        
+    
+    getRateAndFormat(selectedMovie,genre)
+    
+def getRateAndFormat(selectedMovie,genre):
+    
+    #TODO put in thing to see movie options and select format
+    # determine movie genre to obtain rate
+    #create rental object
+    if genre == "childrens"
+    
 
     
