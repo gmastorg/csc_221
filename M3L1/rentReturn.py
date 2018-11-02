@@ -45,46 +45,36 @@ def genreDecision(decision):
         allMovies(movieList)
 
 def newReleases(newReleases):
-    genre = "newRelease"
     
     for item in newReleases:
         print(str(item))
     
-    rentMovie(newReleases, genre)
+    rentMovie(newReleases)
     
 def regular(regular):
-    genre = "regular"
     
     for item in regular:
         print(str(item))
     
-    rentMovie(regular, genre)
+    rentMovie(regular)
 
 def childrens(childrens):
-    genre = "childrens"
     
     for  item in childrens:
         print(str(item))
 
-    rentMovie(childrens, genre)
+    rentMovie(childrens)
     
 def allMovies (movieList):
 
-    for item in movieList:
-        if item.genre == "Animation":
-            genre = "childrens"
-        if item.year == "2011":
-            genre = "new release"
-        else:
-            genre = "regular"
-        
+    for item in movieList:      
         print(str(item))
         
-    rentMovie(movieList, genre)
+    rentMovie(movieList)
     
-def rentMovie(moviesList, genre):
-    
-    movie = input(display.movieName()).Lower()
+def rentMovie(moviesList):
+    rentedMovies=[]
+    movie = input(display.movieName())
     
     for item in moviesList:
         if movie == item.title:
@@ -92,14 +82,17 @@ def rentMovie(moviesList, genre):
         else:
             display.invalidInput()
     
-    getRateAndFormat(selectedMovie,genre)
+    rentedMovies.append(selectedMovie)
     
-def getRateAndFormat(selectedMovie,genre):
+    for item in rentedMovies:
+        print(item.title)
+    
+#def getRateAndFormat(selectedMovie,genre):
     
     #TODO put in thing to see movie options and select format
     # determine movie genre to obtain rate
     #create rental object
-    if genre == "childrens"
+   # if genre == "childrens"
     
 
     

@@ -20,7 +20,7 @@ def getMovieLists():
         inputFile = csv.reader(file)
         
         for row in inputFile:
-             title=row[0].Lower()
+             title=row[0]
              description = row[0]
              genre=row[1]
              year=row[7]
