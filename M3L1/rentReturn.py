@@ -83,10 +83,13 @@ def allMovies (movieList):
     
 def rentMovie(moviesList, genre):
     
-    movie = input(display.movieName())
+    movie = input(display.movieName()).Lower()
     
     for item in moviesList:
         if movie == item.title:
             selectedMovie = item
+        else:
+            display.invalidInput()
+        
 
     

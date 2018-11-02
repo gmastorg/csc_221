@@ -20,6 +20,6 @@ class Movie ():
         return description
 
     def __str__(self):                 
-       return str(self.title)+'\t\t'+str(self.genre)
+       return str(self.title)+'\t\t'+str(self.genre)+' '+str(self.description)
    
     

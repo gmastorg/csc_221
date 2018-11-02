@@ -6,7 +6,7 @@ Created on Mon Oct 29 13:07:30 2018
 """
 import csv
 from movies import Movie
-import rental
+from rental import Rental
 
 def getMovieLists():
     
@@ -20,7 +20,7 @@ def getMovieLists():
         inputFile = csv.reader(file)
         
         for row in inputFile:
-             title=row[0]
+             title=row[0].Lower()
              description = row[0]
              genre=row[1]
              year=row[7]
@@ -41,8 +41,6 @@ def getMovieLists():
     
 
     return moviesList
-
-
 
 
             
