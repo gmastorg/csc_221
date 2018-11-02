@@ -1,28 +1,23 @@
-RedFox Movie Rentals
-123 Carolina Lane
-Fayetteville,North Carolina 12345
-10:00-20:00, Sun
-09:00-20:00, Mon-Sat
-555-867-5309
-www.redfoxrentals.com
+                              RedFox Movie Rentals                              
+                               123 Carolina Lane
+                               Fayetteville, North Carolina 12345                            Hours: 10:00-20:00 Sun, 09:00-20:00, Mon-Sat                            Phone: (555)-867-5309
+                        Visit us: www.redfoxrentals.com                         
 
-
-
-2018-10-31 12:41:09.352397
 
 
 MOVIE RENTAL        FORMAT              RATE                
 --------------------------------------------------
-Hallmark Christmas  DVD                 $3                   
+Hallmark Christmas  BluRay              4                   
+Hallmark Christmas  Stream              5                   
 
 
 
 
 
 
-Total:              $9                                                          
+Total:              $15                                                         
 Tax:                5%                                                          
-Grand Total:        $9.45                                                       
+Grand Total:        $28.35                                                      
 
 
 

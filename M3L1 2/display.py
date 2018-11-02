@@ -8,7 +8,7 @@ holds output for program
 
 def welcomeMessage():
     
-    welcome = "Welcome to our video store.\n"
+    welcome = "Welcome to our RedFox Rental Store.\n"
     
     return welcome
 
