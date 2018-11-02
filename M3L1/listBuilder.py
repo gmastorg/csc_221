@@ -12,7 +12,7 @@ def getMovieLists():
     
     moviesList = [] 
     allMovies = []
-    childrensMovies = []
+    childrens = []
     newReleases = []
     regular = []
     
@@ -29,15 +29,20 @@ def getMovieLists():
         
     for item in allMovies:
         if item.genre == "Animation":
-            childrensMovies.append(item)
-        if item.year == 2011:
+            childrens.append(item)
+        if item.year == "2011":
             newReleases.append(item)
         else:
             regular.append(item)
     
-    moviesList.append(allMovies, childrensMovies, newReleases, regular)
+    moviesList.append(newReleases)
+    moviesList.append(regular)
+    moviesList.append(childrens)
     
+
     return moviesList
+
+
 
 
             

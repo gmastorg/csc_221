@@ -27,7 +27,7 @@ def main():
     #for exit option 
     maxOption = 3
     
-    while decision != 3:
+    while decision != maxOption:
         decision = v.menu(display.rentReturnMenu(),maxOption)
         rentReturnDecision(decision)
 main()

@@ -14,7 +14,7 @@ def welcomeMessage():
 
 def movieName():
     
-    movieName = "Enter the movie name:"
+    movieName = "Enter the title of the movie youd like to rent:"
     
     return movieName   
     
@@ -38,8 +38,7 @@ def rentReturnMenu():
 
 def searchMovies():
     
-    search = "Select an option to search movies by: \n1.New Releases\n2.Regular"
-    +"\n3.Childrens\n4.All Movies\n"
+    search = "Select an option to search movies by: \n1.New Releases\n2.Regular\n3.Childrens\n4.All Movies\n"
     
     return search
             
