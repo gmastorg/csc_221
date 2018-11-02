@@ -16,6 +16,7 @@ print(r.dueDate)#
 print(r.rate)
 print(r.getLateRate())#
 print(r.getRentalRate())#
+print(r.logTime)
 print(str(r))
 
 

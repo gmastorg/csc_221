@@ -54,17 +54,6 @@ def getGenre():
     m=Movie()
     genre=m.getMovieGenre()
     return genre
-#####################INCOMPLETE: LISTMOVIES############################################
-def listMovies():
-    if m.genre=='1' and m.year<2011:#Regular
-        print("Prints Romance, Comedy, Drama")
-    elif m.genre=='2' and m.year<2011:#Children
-        print("prints Animation")
-    elif m.genre=='3' and m.year==2011:#New Release-2011
-        print("prints New Releases")
-
-    choice=input("Enter movie number: ")
-    return choice
 #####################INCOMPLETE: SEARCHMOVIES############################################
 def searchMovies():
 #for search in movies:
@@ -121,7 +110,7 @@ def checkOut(movies, rates):
     grandTotal='{0:.2f}'.format(total)
     return cost, grandTotal
 
-###########################RECEIPT########################################
+###########################RECEIPT MOVE TO CLASS #############################
 def makeReceipt(movies,rates,cost,grandTotal):
     s,header=createHeader()
     '''writes data to receipit in txt file'''
@@ -162,10 +151,6 @@ def main():
 main()
 #########################CUSTOMEROBJECT########################################
 def customerRental(m,r,):
-    c=Customer()
-    c=Customer(c.getCustomerName(),m.title,r.startDate,r.dueDate)
- #   print(c)
-#    custRent=Rental()
- #   custRent=Rental(str(c))
- #   print("You have selected the following movies: ")#,movieList)
-#
+    c=Customer('Marie', 'Hylton','123','ftb','nc','123456')#pass this in when finished.
+    custRental=Customer(c.getCustomerName(),m.title,m.Format,r.startDate,r.dueDate)
+ 

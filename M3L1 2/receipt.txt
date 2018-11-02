@@ -8,16 +8,16 @@
 MOVIE RENTAL        FORMAT              RATE                
 --------------------------------------------------
 Hallmark Christmas  BluRay              4                   
-Hallmark Christmas  Stream              5                   
+Hallmark Christmas  DVD                 3                   
 
 
 
 
 
 
-Total:              $15                                                         
+Total:              $0.0                                                        
 Tax:                5%                                                          
-Grand Total:        $28.35                                                      
+Grand Total:        $0.00                                                       
 
 
 
