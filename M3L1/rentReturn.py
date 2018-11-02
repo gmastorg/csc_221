@@ -73,7 +73,7 @@ def allMovies (movieList):
     rentMovie(movieList)
     
 def rentMovie(moviesList):
-    rentedMovies=[]
+    
     movie = input(display.movieName())
     
     for item in moviesList:
@@ -81,11 +81,6 @@ def rentMovie(moviesList):
             selectedMovie = item
         else:
             display.invalidInput()
-    
-    rentedMovies.append(selectedMovie)
-    
-    for item in rentedMovies:
-        print(item.title)
     
 #def getRateAndFormat(selectedMovie,genre):
     
