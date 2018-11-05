@@ -43,6 +43,8 @@ def genreDecision(decision):
         childrens(movieList[2])
     if decision == 4:
         allMovies(movieList)
+    if decision == 5:
+        rentMovie(movieList)
 
 def newReleases(newReleases):
     
@@ -82,12 +84,25 @@ def rentMovie(moviesList):
         else:
             display.invalidInput()
     
-#def getRateAndFormat(selectedMovie,genre):
+def getRateAndFormat(selectedMovie):
     
-    #TODO put in thing to see movie options and select format
-    # determine movie genre to obtain rate
-    #create rental object
-   # if genre == "childrens"
+        #choice=input("Add movie to your queue? (y/n)\n")
+        #choice=choice.lower()
+        Format,rate=getFormat()
+        if choice=='y':
+            m=Movie()
+            title=search
+            m.genre=genre
+            m.Format=Format
+            m.rate=rate
+            year=row[3]
+            m=Movie(title, m.description, year, m.genre,m.Format,m.rate)
+            print(m)
+            movies.append(m)
+            r=Rental()
+            r=Rental(r.startDate,r.dueDate,m.rate)#obtains and displays rental information per movie
+            rates.append(r)
+            #again=input("Add another movie? (y/n)\n")
+            #again=again.lower()
     
-
     
