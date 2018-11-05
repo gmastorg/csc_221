@@ -3,11 +3,16 @@ from rental import Rental
 from movies import Movie
 
 
+firstName='Marie'
+lastName='Hylton'
+
+c=Customer('Marie', 'Hylton','123','ftb','nc','123456')       
+print("Customer: ",c.firstName+' '+c.lastName)
 
 r=Rental()
 m=Movie()
-rentDate=r.getStartDate()
-dueDate=r.getDueDate()
+rentDate=r.startDate
+dueDate=r.dueDate
 r=Rental(rentDate,dueDate)
 
 
@@ -19,9 +24,16 @@ m.title="Hallmark Christmas"
 #print(m.title)
 title=m.title
 genre=m.getMovieGenre()
-Format=m.getFormat()
+Format=m.getMovieFormat()
 #descript=m.getDescription
 
+print("Try this out!!!!!!!!!")
+print()
+#Format this object#
+custRental=Customer(c.getCustomerName(),m.title,m.Format,r.startDate,r.dueDate,r.logTime)
+print(custRental)
+print('Customer: ',c.getCustomerName(),'\nTitle: ',m.title)
+print()
 print("hi")
 lateRates=r.getLateRate()
 print(lateRates)
@@ -32,7 +44,6 @@ r.movieDetails=m
 print(r.titleMovie)
 print(r)#prints rental object including the title parameter from movie class
 m.getMovieFormat()
-m.getGenre()
 print(r.movieDetails)
 
 
@@ -49,23 +60,25 @@ class CustomerRental(object):#try passing the time obj. through the clas explici
         return self.logTime
 
     #Instead those can be vars in the code
-'''
-    def getExpectedRentDate(self):#redundant?  Use during rental checkout w/time
-        #return r.getStartDate()
-        return datetime.now()#time needed to calculate full day rent/returns
-    
-    def getActualReturnDate(self):#use during return check in w/ time
-        return datetime.now()#time needed to calculate full day rent/returns
 
-    def checkOutTime(self):
-        return datetime.now()
-'''   
+##'''
+##    def getExpectedRentDate(self):#redundant?  Use during rental checkout w/time
+##        #return r.getStartDate()
+##        return datetime.now()#time needed to calculate full day rent/returns
+##    
+##    def getActualReturnDate(self):#use during return check in w/ time
+##        return datetime.now()#time needed to calculate full day rent/returns
+##
+##    def checkOutTime(self):
+##        return datetime.now()
+##'''   
+##
+##'''   def checkoutStatement(self):
+##        #pull current time during checkout as a variable
+##        #include 'dueStatement' about when rentals are due(time)
+##        self.logTime
+##'''
 
-'''   def checkoutStatement(self):
-        #pull current time during checkout as a variable
-        #include 'dueStatement' about when rentals are due(time)
-        self.logTime
-'''
     def calcTimeSpan(self):
         #pull current time during rental return as a variable
         #calc timespan from checkoutStatement to current time during rent return
