@@ -1,3 +1,7 @@
+def customerRentals(rental):
+   
+    customerRentals.append(rental)
+
 def checkOut(movies, rates):
     """uses list of movie objects and list of rental objects to display movies rented as well as the total cost"""
     total = 0

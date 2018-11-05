@@ -14,9 +14,11 @@ import display
 def loginDecision(decision):
     """receieves menu input and calls corresponding method"""
     if decision== 1:
-        login()
+        filename = login()
     if decision==2:
-        createAccount()
+        filename = createAccount()
+    
+    return filename
 
 def login():
     """receives username and password verifies info and loads customer file to customer object"""
@@ -38,6 +40,8 @@ def login():
         display.invalidInput()
         login()
     
+    return filename
+
 def createAccount():
     """has user create account if theirs does not exist"""
     username = input("Username: ")
@@ -55,6 +59,8 @@ def createAccount():
     outfile.write(username+','+password+','+filename+"\n")
     
     outfile.close()
+    
+    return filename
 
 def getCustomerInfo(filename):
     """creates customer object from customer file"""  

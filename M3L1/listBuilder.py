@@ -26,7 +26,9 @@ def getMovieLists():
              year=row[7]
              movie = Movie(genre,description, title, year)
              allMovies.append(movie)
-        
+     
+    allMovies.pop(0)
+    
     for item in allMovies:
         if item.genre == "Animation":
             item.genre = "childrens"

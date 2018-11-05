@@ -7,22 +7,16 @@ class that deals with rental aspects
 """
 
 from datetime import timedelta, date,datetime
-import movies
-import validateInput as v
 
 class Rental(object):
-    def __init__(self,startDate='',dueDate='',logTime='', days=3, Format='', rate =0.0):
+    def __init__(self, Format, rate, movie):
         self.startDate=date.today()#startDate
         self.dueDate=self.startDate+(timedelta(days=3))
         self.logTime=datetime.now().time()
-        self.days=days
+        self.days=3
         self.Format=Format
-        self.rate=rate#do we need this?
-
-        self.For={'1':['1.', 'VHS',1],#{menuChoice:heading,format,formatprice}
-                  '2':['2.', 'DVD',3],
-                  '3':['3.', 'BluRay',4],
-                  '4':['4.', 'Stream',5]}
+        self.rate=rate
+        self.movie=movie
 
     def getTimeStamp(self):
         return self.logTime
@@ -35,27 +29,9 @@ class Rental(object):
         #TimeSpan
         return self.returnTime-self.rentTime
 
-    def getMovieFormat(self):
-        """receives user input to let user select format"""
-        maxOption = 0;
-        for val in self.For.values():
-            print(val[0],val[1])
-            maxOption += 1
-            
-        Format=input("Select format: ")
-        while v.validateNull(Format)==False or v.validateText(Format, maxOption)==False:
-            Format=input("Select format: ")
-        
-        for key, value in self.For.items():
-            if Format==key:           
-                print("You have selected the following movie format: ",value[1])#MEnu
-                rate=value[2]
-                Format=value[1]
-        return Format,rate
     
     def __str__(self):
-        t=movies.Movie()
-        text=("Time Stamp: "+str(self.logTime))
-        text+=("\nRate: "+str(t.rate)+"\nStart Date: "+str(self.startDate))
+        text=("Movie: "+self.movie.title+"\nTime Stamp: "+str(self.logTime))
+        text+=("\nRate: "+str(self.rate)+"\nStart Date: "+str(self.startDate))
         return text
 
