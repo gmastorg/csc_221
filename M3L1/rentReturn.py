@@ -10,64 +10,63 @@ import display
 import validateInput as v
 import rental as r
 
-
-def rentReturnDecision(decision):
+def rentReturnDecision(filename, decision):
     
     if decision == 1:
-        rentMovieMenu()
+        rentMovieMenu(filename)
     if decision == 2:
-        returnMovie()
+        returnMovie(filename)
 
-def returnMovie():
+def returnMovie(filename):
     
     print("return")
 
-def rentMovieMenu():
+def rentMovieMenu(filename):
     
     maxOption = 5
     
     decision = v.menu(display.searchMovies(),maxOption)
     
-    genreDecision(decision)
+    genreDecision(filename,decision)
         
-def genreDecision(decision):
+def genreDecision(filename,decision):
     movieList =[]
     
     movieList = listB.getMovieLists()
     
     if decision == 1:
-        newReleases(movieList[0])    
+        newReleases(filename,movieList)    
     if decision == 2:
-        regular(movieList[1])
+        regular(filename, movieList)
     if decision == 3:
-        childrens(movieList[2])
+        childrens(filename, movieList)
     if decision == 4:
-        allMovies(movieList)
+        allMovies(filename, movieList)
     if decision == 5:
-        rentMovie(movieList)
+        rentMovie(filename, movieList)
 
-def newReleases(newReleases):
+def newReleases(filename, movieList):
     
-    for item in newReleases:
+    for item in movieList[0]:
         print(str(item))
     
-    rentMovie(newReleases)
+    rentMovie(filename, movieList)
     
-def regular(regular):
+def regular(filename, movieList):
     
-    for item in regular:
+    for item in movieList[1]:
         print(str(item))
     
-    rentMovie(regular)
+    rentMovie(filename, movieList)
 
-def childrens(childrens):
+def childrens(filename, movieList):
     
-    for  item in childrens:
+    for  item in movieList[2]:
         print(str(item))
 
-    rentMovie(childrens)
+    rentMovie(filename, movieList)
     
-def allMovies (movieList):
+def allMovies (filename, movieList):
 
     for item in movieList[0]:     
         print(str(item))
@@ -78,42 +77,67 @@ def allMovies (movieList):
     for item in movieList[2]:     
         print(str(item))    
         
-    rentMovie(movieList)
+    rentMovie(filename, movieList)
     
-def rentMovie(movieList):
+def rentMovie(filename, movieList):
 
     movie = input(display.movieName())
     
     for item in movieList[0]:
         if movie == item.title:
             selectedMovie = item
-            print(selectedMovie)
-            #getRateAndFormat(selectedMovie)
         else:
             display.invalidInput()
     
     for item in movieList[1]:
         if movie == item.title:
             selectedMovie = item
-            print(selectedMovie)
+        else:
+            display.invalidInput()
     
     for item in movieList[2]:
         if movie == item.title:
             selectedMovie = item
-            print(selectedMovie)
-    
-#def getRateAndFormat(selectedMovie):
-    
-        #choice=input("Add movie to your queue? (y/n)\n")
-        #choice=choice.lower()
-        #Format,rate=r.getFormat()
-        #if choice=='y':
+        else:
+            display.invalidInput()
         
+    getRateAndFormat(filename, selectedMovie)
+    
+def getRateAndFormat(filename, selectedMovie):
+    
+    #{menuChoice:heading,format,formatprice}
+    For={'1':['1.', 'VHS',1],
+         '2':['2.', 'DVD',3],
+         '3':['3.', 'BluRay',4],
+         '4':['4.', 'Stream',5]}
         
-       # r=Rental()
-       # r=Rental(r.startDate,r.dueDate,m.rate)#obtains and displays rental information per movie
-       # rates.append(r)
-            #again=input("Add another movie? (y/n)\n")
-            #again=again.lower()
+    maxOption = 0;
+    
+    for val in For.values():
+        print(val[0],val[1])
+        maxOption += 1
+            
+    Format=input("Select format: ")
+    while v.validateNull(Format)==False or v.validateText(Format, maxOption)==False:
+        Format=input("Select format: ")
+        
+    for key, value in For.items():
+        if Format==key:           
+            print("You have selected the following movie format: ",value[1])
+            rate=value[2]
+            Format=value[1]
+
+    rental = r.Rental(Format, rate, selectedMovie)
+    
+    outfile = open(filename, 'a')
+    
+    outfile.write(rental.movie.title+","+str(rental.Format)+","+str(rental.logTime)+"\n")
+    
+    outfile.close()
+    
+    print(str(rental))
+    
+
+    
     
     
