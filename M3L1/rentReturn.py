@@ -24,7 +24,7 @@ def returnMovie():
 
 def rentMovieMenu():
     
-    maxOption = 4
+    maxOption = 5
     
     decision = v.menu(display.searchMovies(),maxOption)
     
@@ -69,39 +69,50 @@ def childrens(childrens):
     
 def allMovies (movieList):
 
-    for item in movieList:      
+    for item in movieList[0]:     
         print(str(item))
+    
+    for item in movieList[1]:     
+        print(str(item))
+    
+    for item in movieList[2]:     
+        print(str(item))    
         
     rentMovie(movieList)
     
-def rentMovie(moviesList):
-    
+def rentMovie(movieList):
+
     movie = input(display.movieName())
     
-    for item in moviesList:
+    for item in movieList[0]:
         if movie == item.title:
             selectedMovie = item
+            print(selectedMovie)
+            #getRateAndFormat(selectedMovie)
         else:
             display.invalidInput()
     
-def getRateAndFormat(selectedMovie):
+    for item in movieList[1]:
+        if movie == item.title:
+            selectedMovie = item
+            print(selectedMovie)
+    
+    for item in movieList[2]:
+        if movie == item.title:
+            selectedMovie = item
+            print(selectedMovie)
+    
+#def getRateAndFormat(selectedMovie):
     
         #choice=input("Add movie to your queue? (y/n)\n")
         #choice=choice.lower()
-        Format,rate=getFormat()
-        if choice=='y':
-            m=Movie()
-            title=search
-            m.genre=genre
-            m.Format=Format
-            m.rate=rate
-            year=row[3]
-            m=Movie(title, m.description, year, m.genre,m.Format,m.rate)
-            print(m)
-            movies.append(m)
-            r=Rental()
-            r=Rental(r.startDate,r.dueDate,m.rate)#obtains and displays rental information per movie
-            rates.append(r)
+        #Format,rate=r.getFormat()
+        #if choice=='y':
+        
+        
+       # r=Rental()
+       # r=Rental(r.startDate,r.dueDate,m.rate)#obtains and displays rental information per movie
+       # rates.append(r)
             #again=input("Add another movie? (y/n)\n")
             #again=again.lower()
     

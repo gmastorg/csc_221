@@ -10,40 +10,33 @@ from datetime import datetime
 
 class Store(object):
     def __init__(self, name='', address='', city='', state='', zipcode='', hours='', phone='',website='',message=''):
-        self.name=name
-        self.address=address
-        self.city=city
-        self.state=state
-        self.zipcode=zipcode
-        self.hours=hours
-        self.phone=phone
-        self.website=website
-        self.message=message
-        
-    def getName(self):
-        return "RedFox Movie Rentals"
-
-    def getFullAddress(self):
+        self.name=('RedFox Movie Rentals')
         self.address="123 Carolina Lane"
         self.city="Fayetteville"
         self.state="North Carolina"
         self.zipcode="12345"
-        text=str(self.address)+'\n'+str(self.city)+','+str(self.state)
+        self.hours="Hours: 10:00-20:00 Sun, 09:00-20:00, Mon-Sat"
+        self.phone="Phone: (555)-867-5309"
+        self.website="Visit us: www.redfoxrentals.com"
+        self.message="Thank you for renting with RedFox Rentals.\nWe enjoy serving "\
+               "the best customers in the world!\nPlease provide us with your\n"\
+               "feedback:  https://www.surveyape.com\n"
+        
+    def getFullAddress(self):#Full Address for CSV,site,and receipt
+        text='{:^80}'.format(str(self.address+'\n'))+str(self.city+', '+self.state)
         return text+" "+str(self.zipcode)
-
-    def getPhone(self):
-        return "555-867-5309"
     
-    def getTransactionTime(self):
+    def getTransactionTime(self):#TimeStamp
         return datetime.now()
         
-    def getHours(self):
-        return "10:00-20:00, Sun\n09:00-20:00, Mon-Sat"
-
-    def getWebsite(self):
-        return "www.redfoxrentals.com"
-
-    def getMessage(self):
+    def getMessage(self):#Message at bottom of paper receipts
         return "Thank you for renting with RedFox Rentals.\nWe enjoy serving "\
                "the best customers in the world!\nPlease provide us with your\n"\
                "feedback:  https://www.surveyape.com\n"
+
+    def __str__(self):#Prints Header for site and receipt
+        text='{:^80}'.format(str(self.name))+'\n'+str(self.getFullAddress())
+        text+='\n'+'{:^100}'.format(str(self.hours))+'{:^30}'.format(str(self.phone))
+        text+='\n'+'{:^90}'.format(str(self.website))
+        return text
+        

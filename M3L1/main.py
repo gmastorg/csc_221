@@ -18,16 +18,21 @@ def main():
     maxOption = 2
     
     print(display.welcomeMessage())
-
+    """
     decision = v.menu(display.loginMenu(),maxOption)     
     # uses user input to login or create account    
     l.loginDecision(decision)
-    
+    """
     #lets user say if they are returning or renting maxOption changed to 3 
     #for exit option 
+    decision = 1
     maxOption = 3
     
     while decision != maxOption:
         decision = v.menu(display.rentReturnMenu(),maxOption)
         rentReturnDecision(decision)
+    
+    #checkout(movies,rates)
+    #makeReceipt(movies,rates,cost,grandTotal)
+    
 main()

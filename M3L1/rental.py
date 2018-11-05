@@ -8,6 +8,7 @@ class that deals with rental aspects
 
 from datetime import timedelta, date,datetime
 import movies
+import validateInput as v
 
 class Rental(object):
     def __init__(self,startDate='',dueDate='',logTime='', days=3, Format='', rate =0.0):
@@ -57,4 +58,4 @@ class Rental(object):
         text=("Time Stamp: "+str(self.logTime))
         text+=("\nRate: "+str(t.rate)+"\nStart Date: "+str(self.startDate))
         return text
-tional day.")
+

@@ -44,7 +44,7 @@ def rentReturnMenu():
 
 def searchMovies():
     
-    search = "Select an option to view movies: \n1.New Releases\n2.Regular\n3.Childrens\n4.All Movies\n5.Search Movie by Name"
+    search = "Select an option to view movies: \n1.New Releases\n2.Regular\n3.Childrens\n4.All Movies\n5.Search Movie by Name\n"
     
     return search
             

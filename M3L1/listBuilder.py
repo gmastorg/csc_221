@@ -6,7 +6,7 @@ Created on Mon Oct 29 13:07:30 2018
 """
 import csv
 from movies import Movie
-from rental import Rental
+
 
 def getMovieLists():
     
