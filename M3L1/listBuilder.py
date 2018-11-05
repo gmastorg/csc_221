@@ -29,10 +29,13 @@ def getMovieLists():
         
     for item in allMovies:
         if item.genre == "Animation":
+            item.genre = "childrens"
             childrens.append(item)
         if item.year == "2011":
+            item.genre = "new release"
             newReleases.append(item)
         else:
+            item.genre = "regular"
             regular.append(item)
     
     moviesList.append(newReleases)
