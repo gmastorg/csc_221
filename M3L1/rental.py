@@ -12,7 +12,7 @@ class Rental(object):
     def __init__(self, Format, rate, movie):
         self.startDate=date.today()#startDate
         self.dueDate=self.startDate+(timedelta(days=3))
-        self.logTime=datetime.now().time()
+        self.logTime=datetime.now().time() #Why did we want the time?
         self.days=3
         self.Format=Format
         self.rate=rate

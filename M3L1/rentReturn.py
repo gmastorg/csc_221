@@ -104,14 +104,14 @@ def rentMovie(filename, movieList):
     getRateAndFormat(filename, selectedMovie)
     
 def getRateAndFormat(filename, selectedMovie):
-    
+    #shouldn't the genre effect the price
     #{menuChoice:heading,format,formatprice}
     For={'1':['1.', 'VHS',1],
          '2':['2.', 'DVD',3],
          '3':['3.', 'BluRay',4],
          '4':['4.', 'Stream',5]}
         
-    maxOption = 0;
+    maxOption = 0
     
     for val in For.values():
         print(val[0],val[1])
@@ -131,11 +131,13 @@ def getRateAndFormat(filename, selectedMovie):
     
     outfile = open(filename, 'a')
     
-    outfile.write(rental.movie.title+","+str(rental.Format)+","+str(rental.logTime)+"\n")
+    outfile.write(rental.movie.title+","+str(rental.Format)+","+str(rental.startDate)+"\n")
     
     outfile.close()
     
     print(str(rental))
+    
+    
     
 
     
