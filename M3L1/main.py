@@ -34,7 +34,9 @@ def main():
         decision = v.menu(display.rentReturnMenu(),maxOption)
         rental = rentReturnDecision(customer,decision)
         cart.append(rental)
-        
+    
+    cart.pop(len(cart)-1)
+            
     checkOut(cart)
     
 main()
