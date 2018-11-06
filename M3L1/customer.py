@@ -7,13 +7,14 @@ class for customers
 import validateInput as v
 
 class Customer ():
-    def __init__(self, firstName,lastName, address, city,state,zipcode):
+    def __init__(self, firstName,lastName, address, city,state,zipcode, customerLogin):
         self.firstName=firstName
         self.lastName=lastName
         self.address=address
         self.city=city
         self.state=state
         self.zipcode=zipcode
+        self.customerLogin=customerLogin
 
 
     def getCustomerName(self):

@@ -21,7 +21,7 @@ def main():
     
     decision = v.menu(display.loginMenu(),maxOption)     
     # uses user input to login or create account    
-    filename = l.loginDecision(decision)
+    customer = l.loginDecision(decision)
     
     #lets user say if they are returning or renting maxOption changed to 3 
     #for exit option 
@@ -30,7 +30,7 @@ def main():
     
     while decision != maxOption:
         decision = v.menu(display.rentReturnMenu(),maxOption)
-        rentReturnDecision(filename,decision)
+        rentReturnDecision(customer,decision)
     #checkout(movies,rates)
     #makeReceipt(movies,rates,cost,grandTotal)
     

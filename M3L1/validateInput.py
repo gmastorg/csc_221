@@ -62,7 +62,7 @@ def getFileName(username):
     
     for item in usernamesList:
         if username == item.username:
-            return item.filename
+            return item
 
 def verifyPassword(password):
     """checks the list of customer login objects for password entered by user"""
