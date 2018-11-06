@@ -89,7 +89,6 @@ def rentMovie (movieList):
     for item in movieList[0]:
         if movie == item.title:
             selectedMovie = item
-    # error here goes through whole loop displaying not aailable and then crashes
     
     for item in movieList[1]:
         if movie == item.title:

@@ -8,8 +8,8 @@
 
 MOVIE RENTAL        FORMAT              DAILY RATE          
 --------------------------------------------------
-Tangled             VHS                 1                   
-Beginners           DVD                 3                   
+Jane Eyre           DVD                 3                   
+Tangled             DVD                 3                   
 
 
 
@@ -18,7 +18,7 @@ Beginners           DVD                 3
 
 Min. 3 Day SubTotal: $9.0                                                        
 Tax:                5%                                                          
-Grand Total:        $12.60                                                      
+Grand Total:        $18.90                                                      
 
 
 

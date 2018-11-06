@@ -57,5 +57,4 @@ def makeReceipt(cart,cost,grandTotal):
 def createHeader():
     s=Store()
     header=str(s)
-    print(header)#Needs alignment work.
     return s,header

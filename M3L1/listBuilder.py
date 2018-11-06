@@ -32,7 +32,7 @@ def getMovieLists():
         if item.genre == "Animation":
             item.genre = "childrens"
             childrens.append(item)
-        if item.year == "2011":
+        elif item.year == "2011":
             item.genre = "new release"
             newReleases.append(item)
         else:
@@ -45,14 +45,5 @@ def getMovieLists():
     
 
     return moviesList
-
-def sendToCart(rental):
-    
-    cart = []
-    
-    cart.append(rental)
-    
-    return cart
-        
     
     
