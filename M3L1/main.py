@@ -13,8 +13,10 @@ import display
 import login as l
 import validateInput as v
 from rentReturn import rentReturnDecision
+from checkout import checkOut
 
 def main():
+    cart = []
     maxOption = 2
     
     print(display.welcomeMessage())
@@ -30,8 +32,9 @@ def main():
     
     while decision != maxOption:
         decision = v.menu(display.rentReturnMenu(),maxOption)
-        rentReturnDecision(customer,decision)
-    #checkout(movies,rates)
-    #makeReceipt(movies,rates,cost,grandTotal)
+        rental = rentReturnDecision(customer,decision)
+        cart.append(rental)
+        
+    checkOut(cart)
     
 main()

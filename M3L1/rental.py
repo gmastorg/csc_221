@@ -9,7 +9,7 @@ class that deals with rental aspects
 from datetime import timedelta, date,datetime
 
 class Rental(object):
-    def __init__(self, Format, rate, movie):
+    def __init__(self, Format, rate, movie, customer):
         self.startDate=date.today()#startDate
         self.dueDate=self.startDate+(timedelta(days=3))
         self.logTime=datetime.now().time() #Why did we want the time?
@@ -17,6 +17,7 @@ class Rental(object):
         self.Format=Format
         self.rate=rate
         self.movie=movie
+        self.customer=customer
 
     def getTimeStamp(self):
         return self.logTime

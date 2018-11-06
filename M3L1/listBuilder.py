@@ -7,7 +7,6 @@ Created on Mon Oct 29 13:07:30 2018
 import csv
 from movies import Movie
 
-
 def getMovieLists():
     
     moviesList = [] 
@@ -47,9 +46,13 @@ def getMovieLists():
 
     return moviesList
 
-
-            
-            
+def sendToCart(rental):
+    
+    cart = []
+    
+    cart.append(rental)
+    
+    return cart
         
     
     

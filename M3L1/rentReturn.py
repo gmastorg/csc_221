@@ -13,7 +13,7 @@ import rental as r
 def rentReturnDecision(customer, decision):
     
     if decision == 1:
-        rentMovieMenu(customer)
+        return rentMovieMenu(customer)
     if decision == 2:
         returnMovie(customer)
 
@@ -27,7 +27,8 @@ def rentMovieMenu(customer):
     
     decision = v.menu(display.searchMovies(),maxOption)
     
-    movieSelection(customer,decision)
+    return movieSelection(customer,decision)
+    
         
 def movieSelection(customer,decision):
     movieList =[]
@@ -35,38 +36,40 @@ def movieSelection(customer,decision):
     movieList = listB.getMovieLists()
     
     if decision == 1:
-        newReleases(customer,movieList)    
+        selectedMovie = newReleases(movieList)    
     if decision == 2:
-        regular(customer, movieList)
+        selectedMovie = regular(movieList)
     if decision == 3:
-        childrens(customer, movieList)
+        selectedMovie = childrens(movieList)
     if decision == 4:
-        allMovies(customer, movieList)
+        selectedMovie = allMovies(movieList)
     if decision == 5:
-        rentMovie(customer, movieList)
+        selectedMovie = rentMovie(movieList)
+        
+    return getRateAndFormat(customer, selectedMovie)
 
-def newReleases(customer, movieList):
+def newReleases(movieList):
     
     for item in movieList[0]:
         print(str(item))
     
-    rentMovie(customer, movieList)
+    return rentMovie(movieList)
     
-def regular(customer, movieList):
+def regular(movieList):
     
     for item in movieList[1]:
         print(str(item))
     
-    rentMovie(customer, movieList)
+    return rentMovie(movieList)
 
-def childrens(customer, movieList):
+def childrens(movieList):
     
     for  item in movieList[2]:
         print(str(item))
 
-    rentMovie(customer, movieList)
+    return rentMovie(movieList)
     
-def allMovies (customer, movieList):
+def allMovies (movieList):
 
     for item in movieList[0]:     
         print(str(item))
@@ -77,31 +80,30 @@ def allMovies (customer, movieList):
     for item in movieList[2]:     
         print(str(item))    
         
-    rentMovie(customer, movieList)
+    return rentMovie(movieList)
     
-def rentMovie(customer, movieList):
+def rentMovie (movieList):
 
     movie = input(display.movieName())
     
     for item in movieList[0]:
         if movie == item.title:
             selectedMovie = item
-        else:
-            display.invalidInput()
+    # error here goes through whole loop displaying not aailable and then crashes
     
     for item in movieList[1]:
         if movie == item.title:
-            selectedMovie = item
-        else:
-            display.invalidInput()
+            selectedMovie = item          
     
     for item in movieList[2]:
         if movie == item.title:
             selectedMovie = item
-        else:
-            display.invalidInput()
-        
-    getRateAndFormat(customer, selectedMovie)
+            
+    if not selectedMovie:
+        print(movie, "is not an available movie.")
+        rentMovie(movieList)
+    
+    return selectedMovie
     
 def getRateAndFormat(customer, selectedMovie):
     #shouldn't the genre effect the price
@@ -127,7 +129,7 @@ def getRateAndFormat(customer, selectedMovie):
             rate=value[2]
             Format=value[1]
 
-    rental = r.Rental(Format, rate, selectedMovie)
+    rental = r.Rental(Format, rate, selectedMovie, customer)
     
     outfile = open(customer.customerLogin.filename, 'a')
     
@@ -137,7 +139,7 @@ def getRateAndFormat(customer, selectedMovie):
     
     print(str(rental))
     
-    
+    return rental
     
 
     

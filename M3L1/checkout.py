@@ -1,9 +1,8 @@
-def customerRentals(rental):
-   
-    customerRentals.append(rental)
+from store import Store
 
-def checkOut(movies, rates):
+def checkOut(cart):
     """uses list of movie objects and list of rental objects to display movies rented as well as the total cost"""
+        
     total = 0
     days=3
     purchaseHeader=("RENTAL\tFORMAT\tDAILY RATE\n")
@@ -11,9 +10,8 @@ def checkOut(movies, rates):
     
     print(purchaseHeader,line)
     
-    for item in movies:
-
-        print(item.title+"\t"+item.Format+"\t"+str(item.rate))
+    for item in cart:
+        print(item.movie.title+"\t"+item.Format+"\t"+str(item.rate))
         cost = float(item.rate)*days
         total += cost
     tax = 1.05 # give 105% of the total basically same as (total*.05)+total
@@ -21,10 +19,10 @@ def checkOut(movies, rates):
     
     print("\nTotal: $"+'{0:.2f}'.format(total)+"\n")  
     grandTotal='{0:.2f}'.format(total)
-    return cost, grandTotal
+    makeReceipt(cart, cost, grandTotal)
     
 
-def makeReceipt(movies,rates,cost,grandTotal):
+def makeReceipt(cart,cost,grandTotal):
     s,header=createHeader()
     '''writes data to receipit in txt file'''
     outfile=open("receipt.txt",'w')#Creates a receipt file to hold rental items.
@@ -35,13 +33,13 @@ def makeReceipt(movies,rates,cost,grandTotal):
     outfile.write(head.format("MOVIE RENTAL","FORMAT","DAILY RATE")+'\n')
     outfile.write("-"*50+"\n")
     var='{:<20}'
-    for item in movies:
-        item.title=var.format(item.title)
+    for item in cart:
+        item.movie.title=var.format(item.movie.title)
         item.format=var.format(item.Format)
         item.rate=var.format(str(item.rate))
         strCost='$'+str(cost)
         strTotal='$'+str(grandTotal)
-        outfile.write(item.title+item.format+str(item.rate)+'\n')
+        outfile.write(item.movie.title+item.format+str(item.rate)+'\n')
     outfile.write(spacing*2)
     space='{:<60}'
 
@@ -54,4 +52,10 @@ def makeReceipt(movies,rates,cost,grandTotal):
 
     outfile.close()
     print("Your receipt is ready.")
-    customerRental(movies,rates,cost,grandTotal)
+    #customerRental(cart,cost,grandTotal)
+
+def createHeader():
+    s=Store()
+    header=str(s)
+    print(header)#Needs alignment work.
+    return s,header

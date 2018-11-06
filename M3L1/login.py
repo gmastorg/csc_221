@@ -68,6 +68,8 @@ def getCustomerInfo(customerLogin):
     with open(customerLogin.filename) as file:
         inputFile = csv.reader(file)
         
+        index = 0
+        
         for row in inputFile:
              firstName=row[0]
              lastName=row[1]
@@ -75,6 +77,9 @@ def getCustomerInfo(customerLogin):
              city=row[3]
              state=row[4]
              zipcode=row[5]
+             
+             index += 1
+             if index==1: break
         
     customer = c.Customer(firstName, lastName, address, city, state, zipcode, customerLogin) 
      
