@@ -14,9 +14,11 @@ import display
 def loginDecision(decision):
     """receieves menu input and calls corresponding method"""
     if decision== 1:
-        login()
+        customer = login()
     if decision==2:
-        createAccount()
+        customer = createAccount()
+    
+    return customer
 
 def login():
     """receives username and password verifies info and loads customer file to customer object"""
@@ -30,14 +32,16 @@ def login():
         
         print("Welcome back!\n")
         
-        filename = validate.getFileName(username)
+        customerLogin = validate.getFileName(username)
         
-        getCustomerInfo(filename)
+        customer = getCustomerInfo(customerLogin)
    
     else:
         display.invalidInput()
         login()
     
+    return customer
+
 def createAccount():
     """has user create account if theirs does not exist"""
     username = input("Username: ")
@@ -46,20 +50,25 @@ def createAccount():
     
     filename = username+".csv"
 
-    cl.CustomerLogins(username, password, filename)
+    customerLogin = cl.CustomerLogins(username, password, filename)
     
-    createCustomer(filename)
+    customer = createCustomer(customerLogin)
     
     outfile = open('login.csv', 'a')
     
     outfile.write(username+','+password+','+filename+"\n")
     
     outfile.close()
+    
+    return customer
 
-def getCustomerInfo(filename):
-    """creates customer object from customer file"""  
-    with open(filename) as file:
+def getCustomerInfo(customerLogin):
+    """creates customer object from customer file""" 
+    
+    with open(customerLogin.filename) as file:
         inputFile = csv.reader(file)
+        
+        index = 0
         
         for row in inputFile:
              firstName=row[0]
@@ -68,10 +77,15 @@ def getCustomerInfo(filename):
              city=row[3]
              state=row[4]
              zipcode=row[5]
+             
+             index += 1
+             if index==1: break
         
-    c.Customer(firstName, lastName, address, city, state, zipcode) 
-        
-def createCustomer(filename):
+    customer = c.Customer(firstName, lastName, address, city, state, zipcode, customerLogin) 
+     
+    return customer 
+
+def createCustomer(customerLogin):
    """creates new customer object and new customer file"""      
    firstName=input("First Name: ")
    lastName=input("Last Name: ")
@@ -80,12 +94,14 @@ def createCustomer(filename):
    state=input("State: ")
    zipcode=input("Zip Code: ")
    
-   c.Customer(firstName, lastName, address, city, state, zipcode)
+   customer=c.Customer(firstName, lastName, address, city, state, zipcode, customerLogin)
            
-   outfile = open(filename, 'a')
+   outfile = open(customerLogin.filename, 'a')
     
    outfile.write(firstName+','+lastName+','+address+','+city+','+
                        state+','+zipcode+"\n")
     
    outfile.close()
+   
+   return customer
 

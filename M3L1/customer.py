@@ -7,13 +7,14 @@ class for customers
 import validateInput as v
 
 class Customer ():
-    def __init__(self, firstName,lastName, address, city,state,zipcode):
+    def __init__(self, firstName,lastName, address, city,state,zipcode, customerLogin):
         self.firstName=firstName
         self.lastName=lastName
         self.address=address
         self.city=city
         self.state=state
         self.zipcode=zipcode
+        self.customerLogin=customerLogin
 
 
     def getCustomerName(self):
@@ -22,8 +23,8 @@ class Customer ():
     def getBilling(self):
         text=str(self.address)+'\n'+str(self.city)+','+str(self.state)
         return text+" "+str(self.zipcode)
-
-    def getPayment():#if customer's not returning, cannot place on tab
+    
+    def getPayment(self):#if customer's not returning, cannot place on tab
         """receives customer payment option"""
         maxOption = 0; 
         payMethod={'1':['1.','Cash'],
@@ -31,6 +32,8 @@ class Customer ():
                    '3':['3.','Check'],
                    '4':['4.','Credit Card'],
                    '5':['5.','Tab']}
+        
+        print("\n")
         
         for val in payMethod.values():
             print(val[0],val[1])
@@ -46,6 +49,7 @@ class Customer ():
                 payment=value[1]
     
                 print("You have selected the following payment method: ",payment)
+    
     
     def __str__(self):
         return str(self.getCustomerName()) +str(self.getBilling())

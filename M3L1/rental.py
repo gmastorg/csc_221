@@ -6,45 +6,33 @@
 class that deals with rental aspects
 """
 
-from datetime import timedelta, date,time
-
+from datetime import timedelta, date,datetime
 
 class Rental(object):
-    def __init__(self,startDate='',dueDate='',rate=0.0, lateFee=.2,days=3):
-        self.startDate=startDate
-        self.dueDate=dueDate
-        self.rate=rate
-        self.lateFee=lateFee
-        self.days=days
-
-    def getStartDate(self):
-        """gets date from computer"""
-        self.startDate=date.today()
-        return self.startDate
-
-    def getDueDate(self):
-        """gets date from computer and adds 3"""
+    def __init__(self, Format, rate, movie, customer):
+        self.startDate=date.today()#startDate
         self.dueDate=self.startDate+(timedelta(days=3))
-        return self.dueDate
+        self.logTime=datetime.now().time() #Why did we want the time?
+        self.days=3
+        self.Format=Format
+        self.rate=rate
+        self.movie=movie #movie object
+        self.customer=customer
 
-    def getLateRate(self):
-        """calculates rate if items returned late"""
-        self.lateRate='{0:.2f}'.format(self.rate*self.lateFee)
-        return self.lateRate
-         
-    def getRentalRate(self):
-        """gets total cost for days rented for each movie"""
-        return self.rate*self.days
-    
-    def getRentalDates(r,Format,rate):
-        startDate=r.getStartDate()
-        dueDate=r.getDueDate()
-        lateRate=r.getLateRate()
-        rentalRate=r.getRentalRate()
-        r=Rental(startDate,dueDate,rate)
-        return r
+    def getTimeStamp(self):
+        return self.logTime
+
+    def calcTimeSpan(self):
+        #Rent Time
+        self.rentTime=datetime.now().time()
+        #Return Time
+        self.returnTime=datetime.now().time()
+        #TimeSpan
+        return self.returnTime-self.rentTime
+
     
     def __str__(self):
-        text=("Start Date: "+str(self.startDate))+("\nDueDate: "+str(self.dueDate))
-        text+=("\nRental Rate: $"+str(self.getRentalRate()))
-        return text+("\nLate Fee will be: $"+str(self.getLateRate())+" per additional day.")
+        text=("Movie: "+self.movie.title+"\nTime Stamp: "+str(self.logTime))
+        text+=("\nRate: "+str(self.rate)+"\nStart Date: "+str(self.startDate))
+        return text
+

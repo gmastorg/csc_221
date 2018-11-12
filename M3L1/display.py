@@ -14,9 +14,15 @@ def welcomeMessage():
 
 def movieName():
     
-    movieName = "Enter the movie name:"
+    movieName = "Enter the title of the movie youd like to rent: "
     
     return movieName   
+
+def movieFormat():
+    
+    movieFormat = "Select the movie format: "
+    
+    return movieFormat
     
 def loginMenu():
     
@@ -35,3 +41,10 @@ def rentReturnMenu():
     rentMenu = "1. Rent\n2. Return\n3. Exit\n"
     
     return rentMenu
+
+def searchMovies():
+    
+    search = "Select an option to view movies: \n1.New Releases\n2.Regular\n3.Childrens\n4.All Movies\n5.Search Movie by Name\n"
+    
+    return search
+            
