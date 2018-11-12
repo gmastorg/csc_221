@@ -16,7 +16,7 @@ class Rental(object):
         self.days=3
         self.Format=Format
         self.rate=rate
-        self.movie=movie
+        self.movie=movie #movie object
         self.customer=customer
 
     def getTimeStamp(self):

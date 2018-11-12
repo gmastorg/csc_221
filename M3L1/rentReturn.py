@@ -1,8 +1,10 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Oct 29 13:15:17 2018
+# CSC221
+# M3L1_CanjuraHylton
+# Goal: [Gold]
 
-@author: canjurag4010
+"""
+Author: Gabriela Canjura and Marie Hylton
+goes through rental and return processes 
 """
 
 import listBuilder as listB
@@ -11,18 +13,18 @@ import validateInput as v
 import rental as r
 
 def rentReturnDecision(customer, decision):
-    
+    """has user select to rent or return"""  
     if decision == 1:
         return rentMovieMenu(customer)
     if decision == 2:
         returnMovie(customer)
 
 def returnMovie(customer):
+    """return method"""
     
-    print("return")
 
 def rentMovieMenu(customer):
-    
+    """menu for option to search for movies"""
     maxOption = 5
     
     decision = v.menu(display.searchMovies(),maxOption)
@@ -31,6 +33,7 @@ def rentMovieMenu(customer):
     
         
 def movieSelection(customer,decision):
+    """calls methods corresponding to menu"""
     movieList =[]
     
     movieList = listB.getMovieLists()
@@ -49,28 +52,28 @@ def movieSelection(customer,decision):
     return getRateAndFormat(customer, selectedMovie)
 
 def newReleases(movieList):
-    
+    """prints new relases and searches new releases"""
     for item in movieList[0]:
         print(str(item))
     
     return rentMovie(movieList)
     
 def regular(movieList):
-    
+    """prints regular and searches regular releases"""
     for item in movieList[1]:
         print(str(item))
     
     return rentMovie(movieList)
 
 def childrens(movieList):
-    
+    """prints childrens and searches childrens"""
     for  item in movieList[2]:
         print(str(item))
 
     return rentMovie(movieList)
     
 def allMovies (movieList):
-
+    """prints all movies and searches all movies"""
     for item in movieList[0]:     
         print(str(item))
     
@@ -83,7 +86,7 @@ def allMovies (movieList):
     return rentMovie(movieList)
     
 def rentMovie (movieList):
-
+    """user types in the movie name and it says if movie is available"""
     movie = input(display.movieName())
     
     for item in movieList[0]:
@@ -97,7 +100,8 @@ def rentMovie (movieList):
     for item in movieList[2]:
         if movie == item.title:
             selectedMovie = item
-            
+   
+    """need to fix this doesn't work just crashes"""        
     if not selectedMovie:
         print(movie, "is not an available movie.")
         rentMovie(movieList)
@@ -105,6 +109,7 @@ def rentMovie (movieList):
     return selectedMovie
     
 def getRateAndFormat(customer, selectedMovie):
+    """gets the format option from the customer and creates rental objects"""
     #shouldn't the genre effect the price
     #{menuChoice:heading,format,formatprice}
     For={'1':['1.', 'VHS',1],
@@ -132,7 +137,9 @@ def getRateAndFormat(customer, selectedMovie):
     
     outfile = open(customer.customerLogin.filename, 'a')
     
-    outfile.write(rental.movie.title+","+str(rental.Format)+","+str(rental.startDate)+"\n")
+    outfile.write(rental.movie.title+","+str(rental.movie.genre)+","+
+                  str(rental.Format)+","+str(rental.rate)+','+
+                  str(rental.startDate)+"\n")
     
     outfile.close()
     

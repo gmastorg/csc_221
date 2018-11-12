@@ -1,8 +1,19 @@
+# CSC221
+# M3L1_CanjuraHylton
+# Goal: [Gold]
+
+"""
+Author: Gabriela Canjura and Marie Hylton
+tallies total displays to screen wrties to reciept
+"""
+
 from store import Store
 
 def checkOut(cart):
     """uses list of movie objects and list of rental objects to display movies rented as well as the total cost"""
-        
+    
+    cart[0].customer.getPayment()
+    
     total = 0
     days=3
     purchaseHeader=("RENTAL\tFORMAT\tDAILY RATE\n")

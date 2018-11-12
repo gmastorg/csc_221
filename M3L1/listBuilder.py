@@ -1,8 +1,9 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Oct 29 13:07:30 2018
+# CSC221
+# M3L1_CanjuraHylton
+# Goal: [Gold]
 
-@author: canjurag4010
+"""
+creates list of movie objects and list of objects from previous customer rentals
 """
 import csv
 from movies import Movie
@@ -45,5 +46,17 @@ def getMovieLists():
     
 
     return moviesList
+
+def getOutstandingRentals(customer):
+    
+    outstandingRentals = []
+    
+    with open(customer.customerLogin.filename) as file:
+        inputFile = csv.reader(file)
+        
+        for row in inputfile:
+            title=row[0]
+            Format=row[1]
+            startDate=row[2]
     
     

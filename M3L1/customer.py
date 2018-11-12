@@ -24,7 +24,7 @@ class Customer ():
         text=str(self.address)+'\n'+str(self.city)+','+str(self.state)
         return text+" "+str(self.zipcode)
     
-    def getPayment():#if customer's not returning, cannot place on tab
+    def getPayment(self):#if customer's not returning, cannot place on tab
         """receives customer payment option"""
         maxOption = 0; 
         payMethod={'1':['1.','Cash'],
@@ -32,6 +32,8 @@ class Customer ():
                    '3':['3.','Check'],
                    '4':['4.','Credit Card'],
                    '5':['5.','Tab']}
+        
+        print("\n")
         
         for val in payMethod.values():
             print(val[0],val[1])

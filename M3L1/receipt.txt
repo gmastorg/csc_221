@@ -8,17 +8,17 @@
 
 MOVIE RENTAL        FORMAT              DAILY RATE          
 --------------------------------------------------
-Jane Eyre           DVD                 3                   
 Tangled             DVD                 3                   
+Killers             VHS                 1                   
 
 
 
 
 
 
-Min. 3 Day SubTotal: $9.0                                                        
+Min. 3 Day SubTotal: $3.0                                                        
 Tax:                5%                                                          
-Grand Total:        $18.90                                                      
+Grand Total:        $12.60                                                      
 
 
 
