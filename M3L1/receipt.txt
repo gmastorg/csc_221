@@ -8,8 +8,7 @@
 
 MOVIE RENTAL        FORMAT              DAILY RATE          
 --------------------------------------------------
-Tangled             DVD                 3                   
-Killers             VHS                 1                   
+One Day             VHS                 1                   
 
 
 
@@ -18,7 +17,7 @@ Killers             VHS                 1
 
 Min. 3 Day SubTotal: $3.0                                                        
 Tax:                5%                                                          
-Grand Total:        $12.60                                                      
+Grand Total:        $3.15                                                       
 
 
 
