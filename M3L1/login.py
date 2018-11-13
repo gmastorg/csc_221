@@ -5,22 +5,22 @@
 """
 deals with verification of login and creation of login/customer account
 """
+import listBuilder as listB
 import csv
 import customerLogins as cl
 import validateInput as validate
 import customer as c
 import display
-import movies as m
-import rental as r
 
 def loginDecision(decision):
     """receieves menu input and calls corresponding method"""
     if decision== 1:
-        customer = login()
+        customer, rentals = login()
     if decision==2:
         customer = createAccount()
+        rentals = None
     
-    return customer
+    return customer, rentals
 
 def login():
     """receives username and password verifies info and loads customer file to customer object"""
@@ -38,13 +38,13 @@ def login():
         
         customer = getCustomerInfo(customerLogin)
         
-        rentals = getRentals(customer)
+        rentals = listB.getOutstandingRentals(customer)
    
     else:
         display.invalidInput()
         login()
     
-    return customer
+    return customer, rentals
 
 def createAccount():
     """has user create account if theirs does not exist"""
@@ -88,29 +88,6 @@ def getCustomerInfo(customerLogin):
     customer = c.Customer(firstName, lastName, address, city, state, zipcode, customerLogin) 
      
     return customer 
-
-def getRentals(customer):
-    
-    rentals = []
-    
-    with open(customer.customerLogin.filename) as file:
-        inputFile = csv.reader(file)
-
-        if next(inputFile): #supposed to skip first line and check if second line exists
-            for row in inputFile:
-                if not row[6]: 
-                    title = row[0]
-                    genre = row[1]
-                    year = row[2]
-                    Format = row[3]
-                    rate = row[4]
-                    startDate = row[5]
-                
-                    movie = m.Movie(title, genre, year)
-                    rental = r.Rental(Format, rate, startDate, movie, customer)
-                    rentals.append(rental)
-    
-    print(rentals)
 
 def createCustomer(customerLogin):
    """creates new customer object and new customer file"""      

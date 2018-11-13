@@ -7,6 +7,8 @@ creates list of movie objects and list of objects from previous customer rentals
 """
 import csv
 from movies import Movie
+from rental import Rental
+from datetime import timedelta, date,datetime
 
 def getMovieLists():
     
@@ -21,10 +23,9 @@ def getMovieLists():
         
         for row in inputFile:
              title=row[0]
-             description = row[0]
              genre=row[1]
              year=row[7]
-             movie = Movie(genre,description, title, year)
+             movie = Movie(title, genre, year)
              allMovies.append(movie)
      
     allMovies.pop(0)
@@ -49,14 +50,25 @@ def getMovieLists():
 
 def getOutstandingRentals(customer):
     
-    outstandingRentals = []
+    rentals = []
     
     with open(customer.customerLogin.filename) as file:
         inputFile = csv.reader(file)
+
+        if next(inputFile): #supposed to skip first line and check if second line exists
+            for row in inputFile:
+                if len(row) == 6: 
+                    title = row[0]
+                    genre = row[1]
+                    year = row[2]
+                    Format = row[3]
+                    rate = row[4]
+                    startDate = datetime.strptime(row[5],'%Y-%m-%d')
+                
+                    movie = Movie(title, genre, year)
+                    rental = Rental(Format, rate,startDate, movie, customer)
+                    rentals.append(rental)
         
-        for row in inputfile:
-            title=row[0]
-            Format=row[1]
-            startDate=row[2]
+    return rentals
     
     

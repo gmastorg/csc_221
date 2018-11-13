@@ -7,10 +7,9 @@ class of movie objects
 """
 
 class Movie ():
-    def __init__(self, genre, description, title, year):
+    def __init__(self, title, genre, year):
         
         self.genre=genre
-        self.description=description
         self.title=title
         self.year = year
 
@@ -19,7 +18,8 @@ class Movie ():
         description= "This movie is about: "+ self.title
         return description
 
-    def __str__(self):                 
-       return str(self.title)+'\t\t'+str(self.genre)+' '+str(self.description)
+    def __str__(self):
+        description = self.getDescription()
+        return str(self.title)+'\t'+str(self.genre)+' '+str(description)
    
     
