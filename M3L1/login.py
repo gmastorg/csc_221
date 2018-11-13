@@ -10,6 +10,8 @@ import customerLogins as cl
 import validateInput as validate
 import customer as c
 import display
+import movies as m
+import rental as r
 
 def loginDecision(decision):
     """receieves menu input and calls corresponding method"""
@@ -35,6 +37,8 @@ def login():
         customerLogin = validate.getFileName(username)
         
         customer = getCustomerInfo(customerLogin)
+        
+        rentals = getRentals(customer)
    
     else:
         display.invalidInput()
@@ -84,6 +88,29 @@ def getCustomerInfo(customerLogin):
     customer = c.Customer(firstName, lastName, address, city, state, zipcode, customerLogin) 
      
     return customer 
+
+def getRentals(customer):
+    
+    rentals = []
+    
+    with open(customer.customerLogin.filename) as file:
+        inputFile = csv.reader(file)
+
+        if next(inputFile): #supposed to skip first line and check if second line exists
+            for row in inputFile:
+                if not row[6]: 
+                    title = row[0]
+                    genre = row[1]
+                    year = row[2]
+                    Format = row[3]
+                    rate = row[4]
+                    startDate = row[5]
+                
+                    movie = m.Movie(title, genre, year)
+                    rental = r.Rental(Format, rate, startDate, movie, customer)
+                    rentals.append(rental)
+    
+    print(rentals)
 
 def createCustomer(customerLogin):
    """creates new customer object and new customer file"""      

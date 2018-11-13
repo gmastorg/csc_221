@@ -138,8 +138,8 @@ def getRateAndFormat(customer, selectedMovie):
     outfile = open(customer.customerLogin.filename, 'a')
     
     outfile.write(rental.movie.title+","+str(rental.movie.genre)+","+
-                  str(rental.Format)+","+str(rental.rate)+','+
-                  str(rental.startDate)+"\n")
+                  str(rental.movie.year)+","+str(rental.Format)+","+
+                  str(rental.rate)+','+str(rental.startDate)+"\n")
     
     outfile.close()
     
