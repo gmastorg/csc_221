@@ -37,7 +37,7 @@ def checkOut(cart, outstandingCart, additionalCost):
         outstandingCart[0].customer.getPayment()
         
         cart = outstandingCart
-        print("Your outsanding Rentals are: ")
+        print("You Returned the Following Movie(s): ")
         for item in cart:
             print(item.movie.title+"\t"+item.Format+"\t"+str(item.rate))        
         

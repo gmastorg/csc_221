@@ -21,6 +21,7 @@ def main():
     outstandingCart = []
     totAddCost = 0
     maxOption = 2
+    returned = []
     
     print(display.welcomeMessage())
     
@@ -39,7 +40,7 @@ def main():
             rental = rentReturn.rentMovieMenu(customer)
             cart.append(rental)
         if decision == 2:
-            outstandingCart, additionalCost = rentReturn.returnMovie(outstandingCart, customer)
+            outstandingCart, additionalCost, returned = rentReturn.returnMovie(outstandingCart, customer)
             totAddCost += additionalCost
             
     checkOut(cart, outstandingCart, totAddCost)

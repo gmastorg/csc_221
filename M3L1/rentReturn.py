@@ -16,6 +16,7 @@ def returnMovie(cart, customer):
     """return method"""
     additionalCost = 0
     cart = listB.getOutstandingRentals(customer)
+    returned = []
     
     if not cart:
         print("You have no outstanding rentals.")
@@ -27,12 +28,17 @@ def returnMovie(cart, customer):
                   cart[0].customer.state+","+ cart[0].customer.zipcode+"\n")
 
         movie = input("Enter the name of the movie you would like to return: ")
-    
+        
+        index = 0 
+        
         for item in cart:
+            index += 1 
             if movie == item.movie.title:
                 returnDate = datetime.now()
                 additionalCost = getAdditionalCosts(returnDate, item)
                 additionalCost = int(additionalCost)
+                returned.append(item)
+                cart.pop(index)
             else:
                 returnDate = ""
                 print("This movie is not an outstanding rental")       
@@ -44,7 +50,7 @@ def returnMovie(cart, customer):
     
         outfile.close()
         
-    return cart, additionalCost
+    return cart, additionalCost, returned
 
 def getAdditionalCosts(returnDate, item):
     
