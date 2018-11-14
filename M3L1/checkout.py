@@ -9,27 +9,41 @@ tallies total displays to screen wrties to reciept
 
 from store import Store
 
-def checkOut(cart):
+def checkOut(cart, outstandingCart, additionalCost):
     """uses list of movie objects and list of rental objects to display movies rented as well as the total cost"""
     
-    cart[0].customer.getPayment()
+    if cart:
+        cart[0].customer.getPayment()
+        
+        total = 0
+        days=3
+        purchaseHeader=("RENTAL\tFORMAT\tDAILY RATE\n")
+        line=('-'*len(purchaseHeader))
     
-    total = 0
-    days=3
-    purchaseHeader=("RENTAL\tFORMAT\tDAILY RATE\n")
-    line=('-'*len(purchaseHeader))
+        print(purchaseHeader,line)
     
-    print(purchaseHeader,line)
+        for item in cart:
+            print(item.movie.title+"\t"+item.Format+"\t"+str(item.rate))
+            cost = float(item.rate)*days
+            total += cost
+        
+        tax = 1.05 # give 105% of the total basically same as (total*.05)+total
+        total = total*tax 
     
-    for item in cart:
-        print(item.movie.title+"\t"+item.Format+"\t"+str(item.rate))
-        cost = float(item.rate)*days
-        total += cost
-    tax = 1.05 # give 105% of the total basically same as (total*.05)+total
-    total = total*tax 
+        print("\nTotal: $"+'{0:.2f}'.format(total)+"\n")  
+        grandTotal='{0:.2f}'.format(total)
     
-    print("\nTotal: $"+'{0:.2f}'.format(total)+"\n")  
-    grandTotal='{0:.2f}'.format(total)
+    else:
+        outstandingCart[0].customer.getPayment()
+        
+        cart = outstandingCart
+        cost = additionalCost
+        tax = 1.05
+        total = cost*tax 
+    
+        print("\nTotal: $"+'{0:.2f}'.format(total)+"\n")  
+        grandTotal='{0:.2f}'.format(total)
+
     makeReceipt(cart, cost, grandTotal)
     
 

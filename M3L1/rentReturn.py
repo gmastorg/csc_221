@@ -6,30 +6,60 @@
 Author: Gabriela Canjura and Marie Hylton
 goes through rental and return processes 
 """
-
 import listBuilder as listB
 import display
 import validateInput as v
 import rental as r
+from datetime import timedelta, date,datetime
 
-def rentReturnDecision(customer, decision):
-    """has user select to rent or return"""  
-    if decision == 1:
-        return rentMovieMenu(customer)
-    if decision == 2:
-        returnMovie(customer)
-
-def returnMovie(customer):
+def returnMovie(cart):
     """return method"""
+    additionalCost = 0
     
+    if not cart:
+        print("You have no outstanding rentals.")
+    else:
+        outfile = open(cart[0].customer.customerLogin.filename, 'w')
+        outfile.write(cart[0].customer.firstName+","+cart[0].customer.lastName+","+ 
+                  cart[0].customer.address+","+ cart[0].customer.city+","+
+                  cart[0].customer.state+","+ cart[0].customer.zipcode+"\n")
 
+        movie = input("Enter the name of the movie you would like to return: ")
+    
+        for item in cart:
+            if movie == item.movie.title:
+                returnDate = datetime.now()
+                additionalCost = getAdditionalCosts(returnDate, item)
+            else:
+                returnDate = None
+                print("This movie is not an outstanding rental")       
+                
+            outfile.write(item.movie.title+","+str(item.movie.genre)+","+
+                  str(item.movie.year)+","+str(item.Format)+","+
+                  str(item.rate)+','+str(item.startDate)+','+
+                  str(returnDate)+"\n")
+    
+        outfile.close()
+        
+        return cart, additionalCost
+
+def getAdditionalCosts(returnDate, item):
+    
+    if item.dueDate < returnDate:
+        additionalCost = (returnDate - item.dueDate)*item.rate
+    else: 
+        additionalCost = 0
+    
+    return additionalCost
 def rentMovieMenu(customer):
     """menu for option to search for movies"""
     maxOption = 5
     
     decision = v.menu(display.searchMovies(),maxOption)
     
-    return movieSelection(customer,decision)
+    rental = movieSelection(customer,decision)
+   
+    return rental
     
         
 def movieSelection(customer,decision):
@@ -49,7 +79,9 @@ def movieSelection(customer,decision):
     if decision == 5:
         selectedMovie = rentMovie(movieList)
         
-    return getRateAndFormat(customer, selectedMovie)
+    rental= getRateAndFormat(customer, selectedMovie)
+    
+    return rental
 
 def newReleases(movieList):
     """prints new relases and searches new releases"""
@@ -132,14 +164,15 @@ def getRateAndFormat(customer, selectedMovie):
             print("You have selected the following movie format: ",value[1])
             rate=value[2]
             Format=value[1]
-
-    rental = r.Rental(Format, rate, selectedMovie, customer)
+    startDate = date.today()
+    
+    rental = r.Rental(Format, rate, startDate, selectedMovie, customer)
     
     outfile = open(customer.customerLogin.filename, 'a')
     
     outfile.write(rental.movie.title+","+str(rental.movie.genre)+","+
-                  str(rental.Format)+","+str(rental.rate)+','+
-                  str(rental.startDate)+"\n")
+                  str(rental.movie.year)+","+str(rental.Format)+","+
+                  str(rental.rate)+','+str(rental.startDate)+"\n")
     
     outfile.close()
     

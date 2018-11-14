@@ -8,16 +8,15 @@
 
 MOVIE RENTAL        FORMAT              DAILY RATE          
 --------------------------------------------------
-Jane Eyre           VHS                 1                   
+One Day             DVD                 3                   
 
 
 
 
 
-
-Min. 3 Day SubTotal: $3.0                                                        
+Min. 3 Day SubTotal: $0                                                          
 Tax:                5%                                                          
-Grand Total:        $3.15                                                       
+Grand Total:        $0.00                                                       
 
 
 

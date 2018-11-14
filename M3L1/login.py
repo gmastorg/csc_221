@@ -5,6 +5,7 @@
 """
 deals with verification of login and creation of login/customer account
 """
+import listBuilder as listB
 import csv
 import customerLogins as cl
 import validateInput as validate
@@ -14,11 +15,12 @@ import display
 def loginDecision(decision):
     """receieves menu input and calls corresponding method"""
     if decision== 1:
-        customer = login()
+        customer, rentals = login()
     if decision==2:
         customer = createAccount()
+        rentals = None
     
-    return customer
+    return customer, rentals
 
 def login():
     """receives username and password verifies info and loads customer file to customer object"""
@@ -35,12 +37,14 @@ def login():
         customerLogin = validate.getFileName(username)
         
         customer = getCustomerInfo(customerLogin)
+        
+        rentals = listB.getOutstandingRentals(customer)
    
     else:
         display.invalidInput()
         login()
     
-    return customer
+    return customer, rentals
 
 def createAccount():
     """has user create account if theirs does not exist"""

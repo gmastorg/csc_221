@@ -6,33 +6,20 @@
 class that deals with rental aspects
 """
 
-from datetime import timedelta, date,datetime
+from datetime import timedelta, date
 
 class Rental(object):
-    def __init__(self, Format, rate, movie, customer):
-        self.startDate=date.today()#startDate
+    def __init__(self, Format, rate, startDate, movie, customer):
+        self.startDate= startDate
         self.dueDate=self.startDate+(timedelta(days=3))
-        self.logTime=datetime.now().time() #Why did we want the time?
         self.days=3
         self.Format=Format
         self.rate=rate
         self.movie=movie #movie object
         self.customer=customer
-
-    def getTimeStamp(self):
-        return self.logTime
-
-    def calcTimeSpan(self):
-        #Rent Time
-        self.rentTime=datetime.now().time()
-        #Return Time
-        self.returnTime=datetime.now().time()
-        #TimeSpan
-        return self.returnTime-self.rentTime
-
     
     def __str__(self):
-        text=("Movie: "+self.movie.title+"\nTime Stamp: "+str(self.logTime))
-        text+=("\nRate: "+str(self.rate)+"\nStart Date: "+str(self.startDate))
+        text=("Movie: "+self.movie.title+"\nRate: "+str(self.rate))
+        text+=("\nStart Date: "+str(self.startDate)+"\nDue Date: "+str(self.dueDate))
         return text
 
