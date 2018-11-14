@@ -18,6 +18,7 @@ def returnMovie(cart):
     
     if not cart:
         print("You have no outstanding rentals.")
+        
     else:
         outfile = open(cart[0].customer.customerLogin.filename, 'w')
         outfile.write(cart[0].customer.firstName+","+cart[0].customer.lastName+","+ 
