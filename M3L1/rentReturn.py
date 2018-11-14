@@ -18,6 +18,7 @@ def returnMovie(cart):
     
     if not cart:
         print("You have no outstanding rentals.")
+        
     else:
         outfile = open(cart[0].customer.customerLogin.filename, 'w')
         outfile.write(cart[0].customer.firstName+","+cart[0].customer.lastName+","+ 
@@ -31,7 +32,7 @@ def returnMovie(cart):
                 returnDate = datetime.now()
                 additionalCost = getAdditionalCosts(returnDate, item)
             else:
-                returnDate = None
+                returnDate = ""
                 print("This movie is not an outstanding rental")       
                 
             outfile.write(item.movie.title+","+str(item.movie.genre)+","+
@@ -41,7 +42,7 @@ def returnMovie(cart):
     
         outfile.close()
         
-        return cart, additionalCost
+    return cart, additionalCost
 
 def getAdditionalCosts(returnDate, item):
     

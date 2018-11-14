@@ -57,7 +57,7 @@ def getOutstandingRentals(customer):
 
         if next(inputFile): #supposed to skip first line and check if second line exists
             for row in inputFile:
-                if len(row) == 6: 
+                if len(row)==6: 
                     title = row[0]
                     genre = row[1]
                     year = row[2]

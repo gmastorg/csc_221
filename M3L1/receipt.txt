@@ -8,7 +8,7 @@
 
 MOVIE RENTAL        FORMAT              DAILY RATE          
 --------------------------------------------------
-One Day             DVD                 3                   
+Tangled             DVD                 3                   
 
 
 
