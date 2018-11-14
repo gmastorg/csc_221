@@ -33,14 +33,19 @@ def checkOut(cart, outstandingCart, additionalCost):
         print("\nTotal: $"+'{0:.2f}'.format(total)+"\n")  
         grandTotal='{0:.2f}'.format(total)
     
-    else:
+    elif outstandingCart:
         outstandingCart[0].customer.getPayment()
         
         cart = outstandingCart
+        print("Your outsanding Rentals are: ")
+        for item in cart:
+            print(item.movie.title+"\t"+item.Format+"\t"+str(item.rate))        
+        
         cost = additionalCost
         tax = 1.05
-        total = cost*tax 
-    
+        total = cost*tax
+        
+        print("Additional costs for returning movie after due date: ")
         print("\nTotal: $"+'{0:.2f}'.format(total)+"\n")  
         grandTotal='{0:.2f}'.format(total)
 

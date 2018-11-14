@@ -15,12 +15,11 @@ import display
 def loginDecision(decision):
     """receieves menu input and calls corresponding method"""
     if decision== 1:
-        customer, rentals = login()
+        customer = login()
     if decision==2:
         customer = createAccount()
-        rentals = None
-    
-    return customer, rentals
+            
+    return customer
 
 def login():
     """receives username and password verifies info and loads customer file to customer object"""
@@ -37,14 +36,11 @@ def login():
         customerLogin = validate.getFileName(username)
         
         customer = getCustomerInfo(customerLogin)
-        
-        rentals = listB.getOutstandingRentals(customer)
-   
     else:
         display.invalidInput()
         login()
     
-    return customer, rentals
+    return customer
 
 def createAccount():
     """has user create account if theirs does not exist"""

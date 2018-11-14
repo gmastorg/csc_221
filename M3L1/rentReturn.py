@@ -10,11 +10,12 @@ import listBuilder as listB
 import display
 import validateInput as v
 import rental as r
-from datetime import timedelta, date,datetime
+from datetime import timedelta, date , datetime
 
-def returnMovie(cart):
+def returnMovie(cart, customer):
     """return method"""
     additionalCost = 0
+    cart = listB.getOutstandingRentals(customer)
     
     if not cart:
         print("You have no outstanding rentals.")
@@ -31,6 +32,7 @@ def returnMovie(cart):
             if movie == item.movie.title:
                 returnDate = datetime.now()
                 additionalCost = getAdditionalCosts(returnDate, item)
+                additionalCost = int(additionalCost)
             else:
                 returnDate = ""
                 print("This movie is not an outstanding rental")       
@@ -47,10 +49,12 @@ def returnMovie(cart):
 def getAdditionalCosts(returnDate, item):
     
     if item.dueDate < returnDate:
-        additionalCost = (returnDate - item.dueDate)*item.rate
+        delta = returnDate - item.dueDate
+        days = delta.days
+        additionalCost = days*item.rate
     else: 
         additionalCost = 0
-    
+       
     return additionalCost
 def rentMovieMenu(customer):
     """menu for option to search for movies"""

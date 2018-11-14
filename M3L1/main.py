@@ -19,14 +19,14 @@ from checkout import checkOut
 def main():
     cart = []
     outstandingCart = []
-    additionalCost = 0
+    totAddCost = 0
     maxOption = 2
     
     print(display.welcomeMessage())
     
     decision = v.menu(display.loginMenu(),maxOption)     
     # uses user input to login or create account    
-    customer, outstandingCart = l.loginDecision(decision)
+    customer = l.loginDecision(decision)
     
     #lets user say if they are returning or renting maxOption changed to 3 
     #for exit option 
@@ -39,9 +39,9 @@ def main():
             rental = rentReturn.rentMovieMenu(customer)
             cart.append(rental)
         if decision == 2:
-            outstandingCart, additionalCost = rentReturn.returnMovie(outstandingCart)
-            additionalCost += additionalCost
+            outstandingCart, additionalCost = rentReturn.returnMovie(outstandingCart, customer)
+            totAddCost += additionalCost
             
-    checkOut(cart, outstandingCart, additionalCost)
+    checkOut(cart, outstandingCart, totAddCost)
     
 main()
