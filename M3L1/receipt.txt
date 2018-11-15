@@ -8,16 +8,16 @@
 
 MOVIE RENTAL        FORMAT              DAILY RATE          
 --------------------------------------------------
-Dear John           DVD                 3                   
+The Proposal        BluRay              4                   
 
 
 
 
 
 
-Min. 3 Day SubTotal: $0                                                          
+Min. 3 Day SubTotal: $12.0                                                       
 Tax:                5%                                                          
-Grand Total:        $0.00                                                       
+Grand Total:        $12.60                                                      
 
 
 
