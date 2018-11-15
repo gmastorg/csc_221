@@ -10,47 +10,59 @@ import listBuilder as listB
 import display
 import validateInput as v
 import rental as r
-from datetime import timedelta, date,datetime
+from datetime import timedelta, date , datetime
 
-def returnMovie(cart):
+def returnMovie(cart, oCart, customer, returned):
     """return method"""
     additionalCost = 0
-    
-    if not cart:
+    oCart = listB.getOutstandingRentals(customer)
+        
+    if not oCart:
         print("You have no outstanding rentals.")
         
     else:
-        outfile = open(cart[0].customer.customerLogin.filename, 'w')
-        outfile.write(cart[0].customer.firstName+","+cart[0].customer.lastName+","+ 
-                  cart[0].customer.address+","+ cart[0].customer.city+","+
-                  cart[0].customer.state+","+ cart[0].customer.zipcode+"\n")
+        outfile = open(oCart[0].customer.customerLogin.filename, 'w')
+        outfile.write(oCart[0].customer.firstName+","+oCart[0].customer.lastName+","+ 
+                  oCart[0].customer.address+","+ oCart[0].customer.city+","+
+                  oCart[0].customer.state+","+ oCart[0].customer.zipcode+"\n")
 
         movie = input("Enter the name of the movie you would like to return: ")
-    
-        for item in cart:
+        
+        index = 0 
+        
+        for item in oCart:
             if movie == item.movie.title:
+                returned.append(item)
                 returnDate = datetime.now()
                 additionalCost = getAdditionalCosts(returnDate, item)
+                additionalCost = int(additionalCost)
+                oCart.pop(index)
+                index += 1 
             else:
-                returnDate = None
-                print("This movie is not an outstanding rental")       
+                returnDate = ""
+                oCart.append(item)
                 
             outfile.write(item.movie.title+","+str(item.movie.genre)+","+
                   str(item.movie.year)+","+str(item.Format)+","+
                   str(item.rate)+','+str(item.startDate)+','+
                   str(returnDate)+"\n")
-    
+        
         outfile.close()
         
-        return cart, additionalCost
+        for item in cart:
+            appendToFile(item)
+        
+    return oCart, additionalCost, returned
 
 def getAdditionalCosts(returnDate, item):
     
     if item.dueDate < returnDate:
-        additionalCost = (returnDate - item.dueDate)*item.rate
+        delta = returnDate - item.dueDate
+        days = delta.days
+        additionalCost = days*item.rate
     else: 
         additionalCost = 0
-    
+       
     return additionalCost
 def rentMovieMenu(customer):
     """menu for option to search for movies"""
@@ -169,7 +181,15 @@ def getRateAndFormat(customer, selectedMovie):
     
     rental = r.Rental(Format, rate, startDate, selectedMovie, customer)
     
-    outfile = open(customer.customerLogin.filename, 'a')
+    appendToFile(rental)
+    
+    print(str(rental))
+    
+    return rental
+
+def appendToFile(rental):
+  
+    outfile = open(rental.customer.customerLogin.filename, 'a')
     
     outfile.write(rental.movie.title+","+str(rental.movie.genre)+","+
                   str(rental.movie.year)+","+str(rental.Format)+","+
@@ -177,7 +197,9 @@ def getRateAndFormat(customer, selectedMovie):
     
     outfile.close()
     
-    print(str(rental))
     
-    return rental
+    
+
+    
+    
     
