@@ -44,9 +44,6 @@ def main():
         if decision == 2:
             outCart, addCost, returned = rentReturn.returnMovie(cart, outCart, customer, returned)
             totAddCost += addCost
-            
-    for item in cart:
-        rentReturn.appendToFile(item)
                 
     checkOut(cart, outCart, totAddCost, returned)
     

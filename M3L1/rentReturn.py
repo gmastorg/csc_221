@@ -15,7 +15,7 @@ from datetime import timedelta, date , datetime
 def returnMovie(cart, oCart, customer, returned):
     """return method"""
     additionalCost = 0
-    cart = listB.getOutstandingRentals(customer)
+    oCart = listB.getOutstandingRentals(customer)
         
     if not oCart:
         print("You have no outstanding rentals.")
@@ -48,6 +48,9 @@ def returnMovie(cart, oCart, customer, returned):
                   str(returnDate)+"\n")
         
         outfile.close()
+        
+        for item in cart:
+            appendToFile(item)
         
     return oCart, additionalCost, returned
 

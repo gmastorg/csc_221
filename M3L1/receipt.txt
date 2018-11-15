@@ -8,7 +8,7 @@
 
 MOVIE RENTAL        FORMAT              DAILY RATE          
 --------------------------------------------------
-Beginners           VHS                 1                   
+Dear John           DVD                 3                   
 
 
 
