@@ -15,10 +15,11 @@ import login as l
 import validateInput as v
 import rentReturn 
 from checkout import checkOut
+import listBuilder as listB
 
 def main():
     cart = []
-    outstandingCart = []
+    outCart = []
     totAddCost = 0
     maxOption = 2
     returned = []
@@ -29,6 +30,7 @@ def main():
     # uses user input to login or create account    
     customer = l.loginDecision(decision)
     
+    outCart = listB.getOutstandingRentals(customer)
     #lets user say if they are returning or renting maxOption changed to 3 
     #for exit option 
     decision = 1
@@ -40,9 +42,12 @@ def main():
             rental = rentReturn.rentMovieMenu(customer)
             cart.append(rental)
         if decision == 2:
-            outstandingCart, additionalCost, returned = rentReturn.returnMovie(outstandingCart, customer)
-            totAddCost += additionalCost
+            outCart, addCost, returned = rentReturn.returnMovie(cart, outCart, customer, returned)
+            totAddCost += addCost
             
-    checkOut(cart, outstandingCart, totAddCost)
+    for item in cart:
+        rentReturn.appendToFile(item)
+                
+    checkOut(cart, outCart, totAddCost, returned)
     
 main()

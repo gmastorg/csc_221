@@ -9,7 +9,7 @@ tallies total displays to screen wrties to reciept
 
 from store import Store
 
-def checkOut(cart, outstandingCart, additionalCost):
+def checkOut(cart, outstandingCart, additionalCost, returned):
     """uses list of movie objects and list of rental objects to display movies rented as well as the total cost"""
     
     if cart:
@@ -32,11 +32,13 @@ def checkOut(cart, outstandingCart, additionalCost):
     
         print("\nTotal: $"+'{0:.2f}'.format(total)+"\n")  
         grandTotal='{0:.2f}'.format(total)
-    
-    elif outstandingCart:
-        outstandingCart[0].customer.getPayment()
         
-        cart = outstandingCart
+        makeReceipt(cart, cost, grandTotal)
+    
+    if returned:
+        returned[0].customer.getPayment()
+        
+        cart = returned
         print("You Returned the Following Movie(s): ")
         for item in cart:
             print(item.movie.title+"\t"+item.Format+"\t"+str(item.rate))        
@@ -48,9 +50,13 @@ def checkOut(cart, outstandingCart, additionalCost):
         print("Additional costs for returning movie after due date: ")
         print("\nTotal: $"+'{0:.2f}'.format(total)+"\n")  
         grandTotal='{0:.2f}'.format(total)
-
-    makeReceipt(cart, cost, grandTotal)
     
+        makeReceipt(cart, cost, grandTotal)
+        
+    if outstandingCart:
+        print("You Have the Following Oustanding Movie(s): ")
+        for item in outstandingCart:
+            print(item.movie.title+"\t"+item.Format+"\t"+str(item.rate)) 
 
 def makeReceipt(cart,cost,grandTotal):
     s,header=createHeader()
