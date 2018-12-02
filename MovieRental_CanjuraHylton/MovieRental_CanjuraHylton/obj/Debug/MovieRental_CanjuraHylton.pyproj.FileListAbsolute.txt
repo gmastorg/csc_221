@@ -1,0 +1,6 @@
+E:\2018_FA_CSC221\Module_3\GitHubVersion\csc_221\MovieRental_CanjuraHylton\MovieRental_CanjuraHylton\obj\Debug\MovieRental_CanjuraHylton.pyproj.CoreCompileInputs.cache
+E:\2018_FA_CSC221\Module_3\GitHubVersion\csc_221\MovieRental_CanjuraHylton\MovieRental_CanjuraHylton\bin\Microsoft.PythonTools.WebRole.dll
+E:\2018_FA_CSC221\Module_3\GitHubVersion\csc_221\MovieRental_CanjuraHylton\MovieRental_CanjuraHylton\bin\wfastcgi.py
+C:\Users\gmast\Desktop\MovieRental_CanjuraHylton\MovieRental_CanjuraHylton\obj\Debug\MovieRental_CanjuraHylton.pyproj.CoreCompileInputs.cache
+C:\Users\gmast\Desktop\MovieRental_CanjuraHylton\MovieRental_CanjuraHylton\bin\Microsoft.PythonTools.WebRole.dll
+C:\Users\gmast\Desktop\MovieRental_CanjuraHylton\MovieRental_CanjuraHylton\bin\wfastcgi.py
