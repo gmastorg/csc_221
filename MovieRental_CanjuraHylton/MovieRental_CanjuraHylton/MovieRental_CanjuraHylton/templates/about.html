@@ -2,9 +2,23 @@
 
 {% block content %}
 
-<h2>{{ title }}.</h2>
+<h2>{{ title }}</h2>
 <h3>{{ message }}</h3>
 
-<p>Use this area to provide additional information.</p>
+<p>Reviews</p>
+<!--TODO Find out why error is given when pressing submit-->
+<div class="container">
+    {% for comment in comments %}
+    <div class="row">
+        {{comment}}
+    </div>
+    {% endfor %}
+    <div class="row">
+        <form action="." method="POST">
+            <textarea class="form-control" name="contents" placeholder="Enter a comment"></textarea>
+            <input type="submit" class="btn btn-sucess" value="Post comment">
+        </form>
+    </div>
+</div>
 
 {% endblock %}

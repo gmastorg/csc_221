@@ -18,6 +18,7 @@
     <PythonWsgiHandler>$(MSBuildProjectName).app</PythonWsgiHandler>
     <Name>MovieRental_CanjuraHylton</Name>
     <RootNamespace>MovieRental_CanjuraHylton</RootNamespace>
+    <WebBrowserUrl>http://localhost</WebBrowserUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,18 +29,18 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="MovieRental_CanjuraHylton\MovieRental\checkout.py" />
-    <Compile Include="MovieRental_CanjuraHylton\MovieRental\customer.py" />
-    <Compile Include="MovieRental_CanjuraHylton\MovieRental\customerLogins.py" />
-    <Compile Include="MovieRental_CanjuraHylton\MovieRental\display.py" />
-    <Compile Include="MovieRental_CanjuraHylton\MovieRental\listBuilder.py" />
-    <Compile Include="MovieRental_CanjuraHylton\MovieRental\login.py" />
-    <Compile Include="MovieRental_CanjuraHylton\MovieRental\main.py" />
-    <Compile Include="MovieRental_CanjuraHylton\MovieRental\movies.py" />
-    <Compile Include="MovieRental_CanjuraHylton\MovieRental\rental.py" />
-    <Compile Include="MovieRental_CanjuraHylton\MovieRental\rentReturn.py" />
-    <Compile Include="MovieRental_CanjuraHylton\MovieRental\store.py" />
-    <Compile Include="MovieRental_CanjuraHylton\MovieRental\validateInput.py" />
+    <Compile Include="MovieRental_CanjuraHylton\checkout.py" />
+    <Compile Include="MovieRental_CanjuraHylton\customer.py" />
+    <Compile Include="MovieRental_CanjuraHylton\customerLogins.py" />
+    <Compile Include="MovieRental_CanjuraHylton\display.py" />
+    <Compile Include="MovieRental_CanjuraHylton\listBuilder.py" />
+    <Compile Include="MovieRental_CanjuraHylton\login.py" />
+    <Compile Include="MovieRental_CanjuraHylton\main.py" />
+    <Compile Include="MovieRental_CanjuraHylton\movies.py" />
+    <Compile Include="MovieRental_CanjuraHylton\rentals.py" />
+    <Compile Include="MovieRental_CanjuraHylton\rentReturn.py" />
+    <Compile Include="MovieRental_CanjuraHylton\store.py" />
+    <Compile Include="MovieRental_CanjuraHylton\validateInput.py" />
     <Compile Include="runserver.py" />
     <Compile Include="MovieRental_CanjuraHylton\__init__.py" />
     <Compile Include="MovieRental_CanjuraHylton\views.py" />
@@ -52,7 +53,6 @@
     <Folder Include="MovieRental_CanjuraHylton\static\fonts\" />
     <Folder Include="MovieRental_CanjuraHylton\static\scripts\" />
     <Folder Include="MovieRental_CanjuraHylton\templates\" />
-    <Folder Include="MovieRental_CanjuraHylton\MovieRental\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="MovieRental_CanjuraHylton\CSVFiles\gmastorg.csv" />
@@ -131,4 +131,5 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
 </Project>
