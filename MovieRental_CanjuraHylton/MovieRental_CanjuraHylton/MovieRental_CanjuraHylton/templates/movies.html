@@ -6,9 +6,9 @@
 <h3>{{ message }}</h3>
 
 <div class="container">
-    {% for item in movieTitles %}
-    <div class="row" method="POST">
-        <p>{{item}}</p> 
+    {% for item in allMovies %}
+    <div class="row">
+        <p><a href="{{ url_for('rent', type=item)}}">{{item}}</a></p>
     </div>
     {% endfor %}
 </div>

@@ -61,7 +61,7 @@
     <Content Include="MovieRental_CanjuraHylton\CSVFiles\movies.csv" />
     <Content Include="MovieRental_CanjuraHylton\templates\login.html" />
     <Content Include="MovieRental_CanjuraHylton\templates\movies.html" />
-    <Content Include="MovieRental_CanjuraHylton\templates\rent.html" />
+    <Content Include="MovieRental_CanjuraHylton\templates\checkout.html" />
     <Content Include="MovieRental_CanjuraHylton\templates\returns.html" />
     <Content Include="requirements.txt" />
     <Content Include="MovieRental_CanjuraHylton\static\content\bootstrap.css" />

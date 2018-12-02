@@ -3,15 +3,18 @@ Routes and views for the flask application.
 """
 
 from MovieRental_CanjuraHylton import listBuilder
-from MovieRental_CanjuraHylton import movies
 from MovieRental_CanjuraHylton import rentals
 from MovieRental_CanjuraHylton import store
 from datetime import datetime
 from flask import render_template
 from MovieRental_CanjuraHylton import app
+from flask import request
 
 comments = []
-allMovies = []
+allMovies = [] 
+cart = []
+genre = ""
+movieYear = ""
 s = store.Store()
 
 app.config["DEBUG"] = True
@@ -69,7 +72,7 @@ def login():
     )
     redirect(url_for('login'))
 
-@app.route('/movies', methods = ['GET', 'POST'])
+@app.route('/movies', methods = ["GET", "POST"])
 def movies():
     """Renders the movies page."""
     return render_template(
@@ -77,20 +80,22 @@ def movies():
         title='Movies',
         year=datetime.now().year,
         message='Select from one of our many movies below:',
-        allMovies = listBuilder.getAllMovieTitles,
-    )     
+        allMovies=listBuilder.getAllMovieTitles(),
+        selectedMovie = request.args.get('type')
+    )   
+    
     redirect(url_for('movies'))
 
 
 
-@app.route('/rent')
-def rent():
-    """Renders the about page."""
+@app.route('/checkout')
+def checkout():
+    """Renders the checkout page."""
     return render_template(
-        'rent.html',
-        title='Rent',
+        'checkout.html',
+        title='Checkout',
         year=datetime.now().year,
-        message='Select a movie, the format and add it to your cart.'
+        message='Let us Checkout.'
     )
 
 @app.route('/returns')
