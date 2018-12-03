@@ -91,18 +91,6 @@ def movies():
     
     redirect(url_for('movies'))
 
-@app.route('/format', methods = ["GET", "POST"])
-def format():
-    """Renders the checkout page."""
-    return render_template(
-        'format.html',
-        title='Format',
-        year=datetime.now().year,
-        message='Select a Movie Format.',
-        selectedFormat = request.args.get('type')
-    )
-    redirect(url_for('format'))
-
 @app.route('/checkout', methods = ["GET", "POST"])
 def checkout():
     """Renders the checkout page."""

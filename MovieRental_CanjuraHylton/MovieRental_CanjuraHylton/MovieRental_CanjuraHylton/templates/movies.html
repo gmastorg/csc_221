@@ -7,8 +7,26 @@
 
 <div class="container">
     {% for item in allMovies %}
-    <div class="row">
-        <p><a href="{{ url_for('format', type=item)}}">{{item}}</a></p>
+    <div class="accordion" id="accordion_{{loop.index}}">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse_{{ loop.index }}" aria-expanded="false" aria-controls="collapse_{{ loop.index }}">
+                        {{item}}
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapse_{{ loop.index }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                    This movie is about {{item}}. If you would like to rent this movie please choose the format you would like to rent.
+                    <p><a class="btn btn-link" href="{{ url_for('checkout')}}">VHS</a>
+                    <a class="btn btn-link" href="{{ url_for('checkout')}}">DVD</a>
+                    <a class="btn btn-link" href="{{ url_for('checkout')}}">BlueRay</a>
+                    <a class="btn btn-link" href="{{ url_for('checkout')}}">Stream</a></p>
+                </div>
+            </div>
+        </div>
     </div>
     {% endfor %}
 </div>
