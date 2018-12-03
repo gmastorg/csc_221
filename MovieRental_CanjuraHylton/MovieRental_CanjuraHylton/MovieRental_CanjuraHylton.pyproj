@@ -59,6 +59,7 @@
     <Content Include="MovieRental_CanjuraHylton\CSVFiles\login.csv" />
     <Content Include="MovieRental_CanjuraHylton\CSVFiles\mariehylton.csv" />
     <Content Include="MovieRental_CanjuraHylton\CSVFiles\movies.csv" />
+    <Content Include="MovieRental_CanjuraHylton\templates\format.html" />
     <Content Include="MovieRental_CanjuraHylton\templates\login.html" />
     <Content Include="MovieRental_CanjuraHylton\templates\movies.html" />
     <Content Include="MovieRental_CanjuraHylton\templates\checkout.html" />

@@ -46,7 +46,7 @@ def getMovieLists():
     moviesList.append(childrens)
     
 
-    return movieList
+    return allMovies
 
 def getOutstandingRentals(customer):
     
@@ -76,17 +76,7 @@ def getAllMovieTitles():
     allMovies = []
     titles = []
     
-    with open("C:/Users/gmast/Desktop/MovieRental_CanjuraHylton/MovieRental_CanjuraHylton/MovieRental_CanjuraHylton/CSVFiles/movies.csv") as file:
-        inputFile = csv.reader(file)
-        
-        for row in inputFile:
-            title=row[0]
-            genre=row[1]
-            year=row[7]
-            movie = movies.Movie(title, genre, year)
-            allMovies.append(movie)
-    
-    allMovies.pop(0)
+    allMovies = getMovieLists()
 
     for item in allMovies:
         titles.append(item.title)

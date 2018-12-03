@@ -12,7 +12,10 @@ from flask import request
 
 comments = []
 allMovies = [] 
+movies = []
+movies = listBuilder.getMovieLists()
 cart = []
+
 genre = ""
 movieYear = ""
 s = store.Store()
@@ -61,14 +64,16 @@ def about():
     return redirect(url_for('about'))
     
 
-@app.route('/login')
+@app.route('/login', methods = ["GET"])
 def login():
     """Renders the about page."""
     return render_template(
         'login.html',
         title='Login',
         year=datetime.now().year,
-        message='Login to rent or return a movie.'
+        message='Login to rent or return a movie.',
+        username = request.args.get('type'),
+        password = request.args.get('type')
     )
     redirect(url_for('login'))
 
@@ -86,17 +91,29 @@ def movies():
     
     redirect(url_for('movies'))
 
+@app.route('/format', methods = ["GET", "POST"])
+def format():
+    """Renders the checkout page."""
+    return render_template(
+        'format.html',
+        title='Format',
+        year=datetime.now().year,
+        message='Select a Movie Format.',
+        selectedFormat = request.args.get('type')
+    )
+    redirect(url_for('format'))
 
-
-@app.route('/checkout')
+@app.route('/checkout', methods = ["GET", "POST"])
 def checkout():
     """Renders the checkout page."""
     return render_template(
         'checkout.html',
         title='Checkout',
         year=datetime.now().year,
-        message='Let us Checkout.'
+        message='Let us Checkout.',
+        selectedFormat = request.args.get('type')
     )
+    redirect(url_for('checkout'))
 
 @app.route('/returns')
 def returns():

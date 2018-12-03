@@ -2,13 +2,13 @@
 
 {% block content %}
 
-<h2>{{ title }}.</h2>
+<h2>{{ title }}</h2>
 <h3>{{ message }}</h3>
 
 <div class="container">
     {% for item in allMovies %}
     <div class="row">
-        <p><a href="{{ url_for('rent', type=item)}}">{{item}}</a></p>
+        <p><a href="{{ url_for('format', type=item)}}">{{item}}</a></p>
     </div>
     {% endfor %}
 </div>
