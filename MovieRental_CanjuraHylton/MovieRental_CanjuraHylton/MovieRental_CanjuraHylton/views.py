@@ -80,12 +80,13 @@ def login():
 @app.route('/movies', methods = ["GET", "POST"])
 def movies():
     """Renders the movies page."""
+    allMovies=listBuilder.getAllMovieTitles()
     return render_template(
         'movies.html',
         title='Movies',
         year=datetime.now().year,
         message='Select from one of our many movies below:',
-        allMovies=listBuilder.getAllMovieTitles(),
+        allMovies = allMovies,
     )  
 
     redirect(url_for('movies'))
@@ -102,9 +103,7 @@ def checkout():
         title='Checkout',
         year=datetime.now().year,
         message='Let us Checkout.',
-        cart = cart,
-        cartSize = len(cart),   
-        selectedMovie = selectedMovie   
+        cart = cart,  
     )
     redirect(url_for('checkout'))
 
