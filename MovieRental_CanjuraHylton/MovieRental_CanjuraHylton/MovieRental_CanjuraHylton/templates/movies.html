@@ -20,10 +20,10 @@
             <div id="collapse_{{ loop.index }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                 <div class="card-body">
                     This movie is about {{item}}. If you would like to rent this movie please choose the format you would like to rent.
-                    <p><a class="btn btn-link" href="{{ url_for('checkout')}}">VHS</a>
-                    <a class="btn btn-link" href="{{ url_for('checkout')}}">DVD</a>
-                    <a class="btn btn-link" href="{{ url_for('checkout')}}">BlueRay</a>
-                    <a class="btn btn-link" href="{{ url_for('checkout')}}">Stream</a></p>
+                    <p><a class="btn btn-link" href="{{ url_for('checkout', type = item, format = 1)}}">VHS</a>
+                    <a class="btn btn-link" href="{{ url_for('checkout', type = item, format = 2) }}">DVD</a>
+                    <a class="btn btn-link" href="{{ url_for('checkout', type = item, format = 3) }}">BlueRay</a>
+                    <a class="btn btn-link" href="{{ url_for('checkout', type = item, format = 4)}}">Stream</a></p>
                 </div>
             </div>
         </div>

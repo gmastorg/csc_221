@@ -6,9 +6,9 @@
 validates input
 """
 import csv
-import customerLogins as cl
+from MovieRental_CanjuraHylton import customerLogins as cl
 import string
-import display
+from MovieRental_CanjuraHylton import display
 
 def validateNull(choice):
     """validates if no input"""

@@ -6,10 +6,10 @@
 Author: Gabriela Canjura and Marie Hylton
 goes through rental and return processes 
 """
-import listBuilder as listB
-import display
-import validateInput as v
-import rental as r
+from MovieRental_CanjuraHylton import listBuilder as listB
+from MovieRental_CanjuraHylton import display
+from MovieRental_CanjuraHylton import validateInput as v
+from MovieRental_CanjuraHylton import rentals as r
 from datetime import timedelta, date , datetime
 
 def returnMovie(cart, oCart, customer, returned):
@@ -153,7 +153,7 @@ def rentMovie (movieList):
     
     return selectedMovie
     
-def getRateAndFormat(customer, selectedMovie):
+def getRateAndFormat(selectedMovie, selectedFormat):
     """gets the format option from the customer and creates rental objects"""
     #shouldn't the genre effect the price
     #{menuChoice:heading,format,formatprice}
@@ -162,28 +162,28 @@ def getRateAndFormat(customer, selectedMovie):
          '3':['3.', 'BluRay',4],
          '4':['4.', 'Stream',5]}
         
-    maxOption = 0
+    #maxOption = 0
     
-    for val in For.values():
-        print(val[0],val[1])
-        maxOption += 1
+    #for val in For.values():
+    #    print(val[0],val[1])
+    #    maxOption += 1
             
-    Format=input("Select format: ")
-    while v.validateNull(Format)==False or v.validateText(Format, maxOption)==False:
-        Format=input("Select format: ")
+    #Format=input("Select format: ")
+    #while v.validateNull(Format)==False or v.validateText(Format, maxOption)==False:
+    #    Format=input("Select format: ")
         
     for key, value in For.items():
-        if Format==key:           
-            print("You have selected the following movie format: ",value[1])
+        if selectedFormat==key:           
+            #print("You have selected the following movie format: ",value[1])
             rate=value[2]
             Format=value[1]
     startDate = date.today()
     
-    rental = r.Rental(Format, rate, startDate, selectedMovie, customer)
+    rental = r.Rental(Format, rate, startDate, selectedMovie)#, customer)
     
-    appendToFile(rental)
+    #appendToFile(rental)
     
-    print(str(rental))
+    #print(str(rental))
     
     return rental
 

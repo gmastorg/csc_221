@@ -9,14 +9,14 @@ class that deals with rental aspects
 from datetime import timedelta, date
 
 class Rental(object):
-    def __init__(self, Format, rate, startDate, movie, customer):
+    def __init__(self, Format, rate, startDate, movie): #customer):
         self.startDate= startDate
         self.dueDate=self.startDate+(timedelta(days=3))
         self.days=3
         self.Format=Format
         self.rate=rate
         self.movie=movie #movie object
-        self.customer=customer
+        #self.customer=customer
     
     def __str__(self):
         text=("Movie: "+self.movie.title+"\nRate: "+str(self.rate))

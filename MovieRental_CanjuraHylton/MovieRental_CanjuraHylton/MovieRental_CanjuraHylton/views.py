@@ -2,6 +2,7 @@
 Routes and views for the flask application.
 """
 
+from MovieRental_CanjuraHylton import rentReturn
 from MovieRental_CanjuraHylton import listBuilder
 from MovieRental_CanjuraHylton import rentals
 from MovieRental_CanjuraHylton import store
@@ -13,11 +14,10 @@ from flask import request
 comments = []
 allMovies = [] 
 movies = []
-movies = listBuilder.getMovieLists()
 cart = []
 
-genre = ""
-movieYear = ""
+selectedMovie =""
+selectedFormat = ""
 s = store.Store()
 
 app.config["DEBUG"] = True
@@ -86,20 +86,25 @@ def movies():
         year=datetime.now().year,
         message='Select from one of our many movies below:',
         allMovies=listBuilder.getAllMovieTitles(),
-        selectedMovie = request.args.get('type')
-    )   
-    
+    )  
+
     redirect(url_for('movies'))
 
 @app.route('/checkout', methods = ["GET", "POST"])
 def checkout():
     """Renders the checkout page."""
+    selectedMovie = request.args.get('type'),
+    selectedFormat = request.args.get('format')
+    cart = getCart(selectedMovie, selectedFormat)
+
     return render_template(
         'checkout.html',
         title='Checkout',
         year=datetime.now().year,
         message='Let us Checkout.',
-        selectedFormat = request.args.get('type')
+        cart = cart,
+        cartSize = len(cart),   
+        selectedMovie = selectedMovie   
     )
     redirect(url_for('checkout'))
 
@@ -112,3 +117,15 @@ def returns():
         year=datetime.now().year,
         message='Return outstanding movies.'
     )
+
+def getCart(selectedMovie, selectedFormat):
+
+    movies = listBuilder.getMovieLists()    
+    selectedMovie = selectedMovie[0]
+    for item in movies:
+        print("comparing",selectedMovie,"with",item.title)
+        if selectedMovie == item.title:
+          rental = rentReturn.getRateAndFormat(item, selectedFormat)   
+          cart.append(rental)
+
+    return cart

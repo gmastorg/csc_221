@@ -18,7 +18,7 @@ def getMovieLists():
     newReleases = []
     regular = []
     
-    with open("C:/Users/gmast/Desktop/MovieRental_CanjuraHylton/MovieRental_CanjuraHylton/MovieRental_CanjuraHylton/CSVFiles/movies.csv") as file:
+    with open("E:/2018_FA_CSC221/Module_3/GitHubVersion/csc_221/MovieRental_CanjuraHylton/MovieRental_CanjuraHylton/MovieRental_CanjuraHylton/CSVFiles/movies.csv") as file:
         inputFile = csv.reader(file)
         
         for row in inputFile:
@@ -30,20 +30,20 @@ def getMovieLists():
      
     allMovies.pop(0)
     
-    for item in allMovies:
-        if item.genre == "Animation":
-            item.genre = "childrens"
-            childrens.append(item)
-        elif item.year == "2011":
-            item.genre = "new release"
-            newReleases.append(item)
-        else:
-            item.genre = "regular"
-            regular.append(item)
+    #for item in allMovies:
+    #    if item.genre == "Animation":
+    #        item.genre = "childrens"
+    #        childrens.append(item)
+    #    elif item.year == "2011":
+    #        item.genre = "new release"
+    #        newReleases.append(item)
+    #    else:
+    #        item.genre = "regular"
+    #        regular.append(item)
     
-    moviesList.append(newReleases)
-    moviesList.append(regular)
-    moviesList.append(childrens)
+    #moviesList.append(newReleases)
+    #moviesList.append(regular)
+    #moviesList.append(childrens)
     
 
     return allMovies
