@@ -10,6 +10,10 @@ from datetime import datetime
 from flask import render_template
 from MovieRental_CanjuraHylton import app
 from flask import request
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+from flask_login import login_user, LoginManager, UserMixin, logout_user, login_required, current_user
+from werkzeug.security import check_password_hash
 
 comments = []
 allMovies = [] 
@@ -52,16 +56,26 @@ def contact():
 @app.route('/about', methods = ["GET", "POST"])
 def about():
     """Renders the about page."""
-    return render_template(
+    
+    if request.method == "GET":
+        #comments = getComments()
+        return render_template(
         'about.html',
         title='About',
         year=datetime.now().year,
         message='We are a video rental store. We have several movies for you to enjoy.',
         comments = comments
         )
-     
-    comments.append(request.form["contents"])
-    return redirect(url_for('about'))
+
+    if request.method == "POST":
+        comments.append(request.form["contents"])
+        return render_template(
+        'about.html',
+        title='About',
+        year=datetime.now().year,
+        message='We are a video rental store. We have several movies for you to enjoy.',
+        comments = comments
+        )
     
 
 @app.route('/login', methods = ["GET"])
@@ -97,13 +111,22 @@ def checkout():
     selectedMovie = request.args.get('type'),
     selectedFormat = request.args.get('format')
     cart = getCart(selectedMovie, selectedFormat)
-
+    cartsize = len(cart)
+    total = getTotal(cart)
+    tax = 1.05
+    grandtotal = (total*tax)
+    days = 3
     return render_template(
         'checkout.html',
         title='Checkout',
         year=datetime.now().year,
         message='Let us Checkout.',
         cart = cart,  
+        cartsize = cartsize,
+        days = days,
+        total = '{0:.2f}'.format(total),
+        tax = '{0:.2f}'.format(grandtotal-total),
+        grandtotal = '{0:.2f}'.format(grandtotal),
     )
     redirect(url_for('checkout'))
 
@@ -128,3 +151,12 @@ def getCart(selectedMovie, selectedFormat):
           cart.append(rental)
 
     return cart
+
+def getTotal(cart):
+
+    total = 0    
+
+    for item in cart:
+        total += item.rate*3
+    
+    return total
