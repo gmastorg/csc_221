@@ -55,6 +55,7 @@
     <Folder Include="MovieRental_CanjuraHylton\templates\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MovieRental_CanjuraHylton\CSVFiles\comments.csv" />
     <Content Include="MovieRental_CanjuraHylton\CSVFiles\gmastorg.csv" />
     <Content Include="MovieRental_CanjuraHylton\CSVFiles\login.csv" />
     <Content Include="MovieRental_CanjuraHylton\CSVFiles\mariehylton.csv" />

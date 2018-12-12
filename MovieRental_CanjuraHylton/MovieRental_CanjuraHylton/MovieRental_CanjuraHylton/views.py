@@ -2,6 +2,7 @@
 Routes and views for the flask application.
 """
 
+import os
 from MovieRental_CanjuraHylton import rentReturn
 from MovieRental_CanjuraHylton import listBuilder
 from MovieRental_CanjuraHylton import rentals
@@ -55,10 +56,10 @@ def contact():
 
 @app.route('/about', methods = ["GET", "POST"])
 def about():
-    """Renders the about page."""
-    
+    """Renders the about page. reads comments from file and displays them saves new comments to file"""
+    comments = listBuilder.getComments()
+
     if request.method == "GET":
-        #comments = getComments()
         return render_template(
         'about.html',
         title='About',
@@ -69,6 +70,7 @@ def about():
 
     if request.method == "POST":
         comments.append(request.form["contents"])
+        saveComments(request.form["contents"])
         return render_template(
         'about.html',
         title='About',
@@ -76,11 +78,11 @@ def about():
         message='We are a video rental store. We have several movies for you to enjoy.',
         comments = comments
         )
-    
+      
 
 @app.route('/login', methods = ["GET"])
 def login():
-    """Renders the about page."""
+    """Renders the login page. Login itself not yet functioning"""
     return render_template(
         'login.html',
         title='Login',
@@ -107,7 +109,7 @@ def movies():
 
 @app.route('/checkout', methods = ["GET", "POST"])
 def checkout():
-    """Renders the checkout page."""
+    """Renders the checkout page. Has cart and total form to pay not functioning yet."""
     selectedMovie = request.args.get('type'),
     selectedFormat = request.args.get('format')
     cart = getCart(selectedMovie, selectedFormat)
@@ -132,7 +134,7 @@ def checkout():
 
 @app.route('/returns')
 def returns():
-    """Renders the about page."""
+    """Renders the returns page. Not yet fully functioning"""
     return render_template(
         'returns.html',
         title='Return',
@@ -160,3 +162,11 @@ def getTotal(cart):
         total += item.rate*3
     
     return total
+
+def saveComments(comment):
+
+    outfile = open(os.path.dirname(__file__)+"/CSVFiles/comments.csv", 'a')
+    
+    outfile.write(comment+",\n")
+    
+    outfile.close()

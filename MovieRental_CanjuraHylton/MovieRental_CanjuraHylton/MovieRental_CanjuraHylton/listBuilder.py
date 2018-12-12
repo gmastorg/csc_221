@@ -5,6 +5,8 @@
 """
 creates list of movie objects and list of objects from previous customer rentals
 """
+
+import os
 import csv
 from MovieRental_CanjuraHylton import movies
 from MovieRental_CanjuraHylton import rentals as rent
@@ -18,7 +20,7 @@ def getMovieLists():
     newReleases = []
     regular = []
     
-    with open("E:/2018_FA_CSC221/Module_3/GitHubVersion/csc_221/MovieRental_CanjuraHylton/MovieRental_CanjuraHylton/MovieRental_CanjuraHylton/CSVFiles/movies.csv") as file:
+    with open(os.path.dirname(__file__)+"/CSVFiles/movies.csv") as file:
         inputFile = csv.reader(file)
         
         for row in inputFile:
@@ -48,8 +50,22 @@ def getMovieLists():
 
     return allMovies
 
-def getOutstandingRentals(customer):
+def getComments():
+    """Gets Comments from file"""
+    comments = []
+
+    with open(os.path.dirname(__file__)+"/CSVFiles/comments.csv") as file:
+        inputFile = csv.reader(file)
     
+        for row in inputFile:
+            comment = row[0]
+            
+            comments.append(comment)
+            
+    return comments
+
+def getOutstandingRentals(customer):
+    """gets customer's outstanding moveis"""
     rentals = []
     
     with open(customer.customerLogin.filename) as file:
