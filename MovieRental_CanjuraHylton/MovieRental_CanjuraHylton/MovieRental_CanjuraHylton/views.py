@@ -3,6 +3,7 @@ Routes and views for the flask application.
 """
 
 import os
+from MovieRental_CanjuraHylton import login
 from MovieRental_CanjuraHylton import rentReturn
 from MovieRental_CanjuraHylton import listBuilder
 from MovieRental_CanjuraHylton import rentals
@@ -79,19 +80,35 @@ def about():
         comments = comments
         )
       
-
-@app.route('/login', methods = ["GET"])
+@app.route("/login", methods=["GET", "POST"])
 def login():
-    """Renders the login page. Login itself not yet functioning"""
-    return render_template(
-        'login.html',
-        title='Login',
-        year=datetime.now().year,
-        message='Login to rent or return a movie.',
-        username = request.args.get('type'),
-        password = request.args.get('type')
-    )
-    redirect(url_for('login'))
+    if request.method == "GET":
+        return render_template("login.html", error=False)
+    if request.method == "POST":
+        username = request.form["username"]
+        if username is "":
+            return render_template("login.html", error=True)
+        if login.login(username, request.form["password"]) == False:
+            return render_template("login.html", error=True)
+        else: #If the password matches, log the user in
+            customerLogin = validate.getFileName(username)
+            customer = login.getCustomerInfo(customerLogin)
+            return render_template(
+                        "index.html",)
+                        
+
+
+#@app.route('/login', methods = ["GET"])
+#def login():
+  # """Renders the login page. Login itself not yet functioning"""
+#    return render_template(
+ #       'login.html',
+  #   year=datetime.now().year,
+    #    message='Login to rent or return a movie.',
+     #   username = request.args.get('type'),
+      #  password = request.args.get('type')
+    #)
+    #redirect(url_for('login'))
 
 @app.route('/movies', methods = ["GET", "POST"])
 def movies():
@@ -140,6 +157,16 @@ def returns():
         title='Return',
         year=datetime.now().year,
         message='Return outstanding movies.'
+    )
+
+@app.route('/logout')
+def logout():
+    """Renders the returns page. Not yet fully functioning"""
+    return render_template(
+        'logout.html',
+        title='Logout',
+        year=datetime.now().year,
+        message='You are logged out.'
     )
 
 def getCart(selectedMovie, selectedFormat):

@@ -5,12 +5,12 @@
 """
 deals with verification of login and creation of login/customer account
 """
-import listBuilder as listB
+from MovieRental_CanjuraHylton import listBuilder as listB
 import csv
-import customerLogins as cl
-import validateInput as validate
-import customer as c
-import display
+from MovieRental_CanjuraHylton import customerLogins as cl
+from MovieRental_CanjuraHylton import validateInput as validate
+from MovieRental_CanjuraHylton import customer as c
+from MovieRental_CanjuraHylton import display
 
 def loginDecision(decision):
     """receieves menu input and calls corresponding method"""
@@ -21,26 +21,30 @@ def loginDecision(decision):
             
     return customer
 
-def login():
+def login(username, password):
     """receives username and password verifies info and loads customer file to customer object"""
-    username = input("Username: ")
-    password = input("Password: ")
+    #username = input("Username: ")
+    #password = input("Password: ")
     
     verifyUsername = validate.verifyUsername(username)
     verifyPassword = validate.verifyPassword(password)
     
     if(verifyUsername == True and verifyPassword == True):
-        
-        print("Welcome back!\n")
-        
-        customerLogin = validate.getFileName(username)
-        
-        customer = getCustomerInfo(customerLogin)
+
+        login = True
     else:
-        display.invalidInput()
-        login()
+
+        login = False
+        #print("Welcome back!\n")
+        
+        #customerLogin = validate.getFileName(username)
+        
+        #customer = getCustomerInfo(customerLogin)
+    #else:
+       # display.invalidInput()
+       # login()
     
-    return customer
+    return login
 
 def createAccount():
     """has user create account if theirs does not exist"""

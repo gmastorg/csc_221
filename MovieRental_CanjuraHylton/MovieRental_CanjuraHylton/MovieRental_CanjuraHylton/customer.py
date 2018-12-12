@@ -4,7 +4,7 @@
 """
 class for customers 
 """
-import validateInput as v
+from MovieRental_CanjuraHylton import validateInput as v
 
 class Customer ():
     def __init__(self, firstName,lastName, address, city,state,zipcode, customerLogin):
@@ -53,3 +53,4 @@ class Customer ():
     
     def __str__(self):
         return str(self.getCustomerName()) +str(self.getBilling())
+

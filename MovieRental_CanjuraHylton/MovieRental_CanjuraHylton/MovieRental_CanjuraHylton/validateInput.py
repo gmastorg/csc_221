@@ -5,6 +5,8 @@
 """
 validates input
 """
+
+import os
 import csv
 from MovieRental_CanjuraHylton import customerLogins as cl
 import string
@@ -28,13 +30,13 @@ def getUserNames():
     """creates list of login usernames and passwords from file"""
     usernames = []
     
-    with open ('login.csv') as file:
+    with open (os.path.dirname(__file__)+"/CSVFiles/login.csv") as file:
         inputFile = csv.reader(file)
         
         for row in inputFile:
             username = row[0]
             password = row[1]
-            filename = row[2]
+            filename = os.path.dirname(__file__)+"/CSVFiles/"+row[2]
                 
             logins = cl.CustomerLogins(username, password, filename)
             
